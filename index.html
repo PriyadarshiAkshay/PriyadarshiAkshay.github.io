@@ -134,7 +134,7 @@
             padding: 10px 20px;
             border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s, color 0.3s;
             width: 200px;
             height: 50px;
             display: flex;
@@ -145,6 +145,7 @@
         }
         .nav-button:hover {
             background-color: var(--secondary-color);
+            color: var(--bg-color);
             transform: scale(1.1);
         }
         .contact-info {
@@ -165,7 +166,7 @@
     </style>
 </head>
 <body>
-    <button id="mode-toggle">🌓</button>
+    <button id="mode-toggle">🌙</button>
     <div class="nav-buttons">
         <button class="nav-button" onclick="scrollToSection('education')">Education</button>
         <button class="nav-button" onclick="scrollToSection('projects')">Projects</button>
@@ -346,8 +347,25 @@
         const modeToggle = document.getElementById('mode-toggle');
         const body = document.body;
 
+        // Function to set the theme
+        function setTheme(isDark) {
+            body.classList.toggle('dark-mode', isDark);
+            modeToggle.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        // Check user's preferred color scheme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme(true);
+        }
+
+        // Listen for changes in color scheme preference
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            setTheme(e.matches);
+        });
+
+        // Toggle theme when button is clicked
         modeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
+            setTheme(!body.classList.contains('dark-mode'));
         });
 
         function scrollToSection(sectionId) {

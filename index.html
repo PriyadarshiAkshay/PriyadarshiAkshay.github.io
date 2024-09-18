@@ -4,76 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akshay Priyadarshi - Astrophysicist & Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f5f5f5;
+            --bg-color: #f8f9fa;
             --text-color: #333;
-            --primary-color: #3498db;
+            --primary-color: #4a90e2;
             --secondary-color: #2c3e50;
             --card-bg: #ffffff;
+            --gradient-bg: linear-gradient(135deg, #4a90e2, #2c3e50);
         }
         .dark-mode {
             --bg-color: #1a2a3a;
             --text-color: #ecf0f1;
-            --primary-color: #3498db;
+            --primary-color: #4a90e2;
             --secondary-color: #ecf0f1;
             --card-bg: #2c3e50;
+            --gradient-bg: linear-gradient(135deg, #2c3e50, #4a90e2);
         }
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
             color: var(--text-color);
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background-color: var(--bg-color);
+            background-image: var(--gradient-bg);
+            background-attachment: fixed;
             transition: background-color 0.3s, color 0.3s;
         }
         h1, h2, h3 {
             color: var(--secondary-color);
+            font-weight: 600;
         }
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
+            text-align: center;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 40px;
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
         }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 30px;
-        }
-        .contact-info {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .contact-info a {
-            color: white;
+        a {
+            color: var(--primary-color);
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        .content-wrapper {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 50px;
         }
         .project {
             background-color: var(--card-bg);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .project h3 {
             margin-top: 0;
+            color: var(--primary-color);
         }
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 20px;
         }
         .skill {
             background-color: var(--primary-color);
             color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 0.9em;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .skill:hover {
+            transform: scale(1.05);
+            background-color: var(--secondary-color);
         }
         #mode-toggle {
             position: fixed;
@@ -82,9 +107,16 @@
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        #mode-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
         }
         .nav-buttons {
             position: fixed;
@@ -99,119 +131,192 @@
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 10px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 200px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        .nav-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        .contact-info {
+            background-image: var(--gradient-bg);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .contact-info a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <button id="mode-toggle">Toggle Dark Mode</button>
+    <button id="mode-toggle">🌓</button>
     <div class="nav-buttons">
         <button class="nav-button" onclick="scrollToSection('education')">Education</button>
         <button class="nav-button" onclick="scrollToSection('projects')">Projects</button>
         <button class="nav-button" onclick="scrollToSection('skills')">Skills</button>
         <button class="nav-button" onclick="scrollToSection('teaching')">Teaching</button>
         <button class="nav-button" onclick="scrollToSection('outreach')">Outreach</button>
+        <button class="nav-button" onclick="scrollToSection('experience')">Experience</button>
+        <button class="nav-button" onclick="scrollToSection('honors')">Honors</button>
         <button class="nav-button" onclick="scrollToSection('contact')">Contact</button>
     </div>
 
-    <h1>Akshay Priyadarshi</h1>
+    <div class="content-wrapper">
+        <h1>Akshay Priyadarshi</h1>
 
-    <section id="education">
-        <h2>Education</h2>
-        <p><strong>PhD in Astronomy & Astrophysics</strong><br>
-        University of Manchester (2021 - 2025 Expected)<br>
-        Funded by UKRI-STFC scholarship</p>
-        
-        <p><strong>Integrated MSc in Physics & minor in Computer Science</strong><br>
-        NISER Bhubaneswar, India (2016 - 2021)<br>
-        Funded by DST-INSPIRE scholarship</p>
-    </section>
+        <section id="education">
+            <h2>Education</h2>
+            <p><strong>PhD in Astronomy & Astrophysics</strong><br>
+            University of Manchester (2021 - 2025 Expected)<br>
+            Funded by UKRI-STFC scholarship</p>
+            
+            <p><strong>Integrated MSc in Physics & minor in Computer Science</strong><br>
+            NISER Bhubaneswar, India (2016 - 2021)<br>
+            Funded by DST-INSPIRE scholarship</p>
+        </section>
 
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="project">
-            <h3>AI Response and Code Evaluator</h3>
-            <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
-            <p>Assessing the accuracy and quality of AI-generated code. Evaluating AI outputs, ensuring they meet predefined quality standards, and providing feedback for continuous model improvement.</p>
-        </div>
-        <div class="project">
-            <h3>TransitFit Python package</h3>
-            <p>JBCA, University of Manchester (2022 - ongoing)</p>
-            <p>Developed "TransitFit", a tool for exoplanet transmission spectroscopy. Enables detection of atmospheric molecules and determination of physical parameters in exoplanets.</p>
-            <p><a href="https://github.com/SPEARNET/TransitFit">GitHub Repository</a></p>
-        </div>
-        <div class="project">
-            <h3>Exoplanet Demographics Study</h3>
-            <p>JBCA, University of Manchester (2021 - ongoing)</p>
-            <p>Building a statistical tool to simulate planets around stars, estimating the number and characteristics of undetected planets to optimize future observations and planet formation theories.</p>
-        </div>
-        <div class="project">
-            <h3>Simulation and prediction of exoplanet atmosphere</h3>
-            <p>NISER Bhubaneswar (2020 - 2021)</p>
-            <p>Modeled the atmosphere and simulated observations to predict the existence of HC₃N in a Super-Earth exoplanet GJ1132 b.</p>
-            <p>Publication: <a href="https://doi.org/10.3847/2041-8213/ac2f3a">Paper</a></p>
-        </div>
-        <div class="project">
-            <h3>Machine Learning model to improve detection of dark matter</h3>
-            <p>NISER Bhubaneswar (2020 - 2021)</p>
-            <p>Compared ML algorithms (Random Forest, SVM, Linear Regression, Neural Networks) to train and test a model over observational data. Improved accuracy of signal retrieval using Linear Regression and Random Forests.</p>
-            <p><a href="https://PriyadarshiAkshay.github.io/MLProject.html">Project report</a></p>
-        </div>
-    </section>
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="project">
+                <h3>AI models and code evaluator</h3>
+                <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
+                <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
+            </div>
+            <div class="project">
+                <h3>TransitFit Python package</h3>
+                <p>JBCA, University of Manchester (2022 - ongoing)</p>
+                <p>Developed "TransitFit", a tool for exoplanet transmission spectroscopy. Enables detection of atmospheric molecules and determination of physical parameters in exoplanets.</p>
+                <p><a href="https://github.com/SPEARNET/TransitFit">GitHub Repository</a></p>
+            </div>
+            <div class="project">
+                <h3>Exoplanet Demographics Study</h3>
+                <p>JBCA, University of Manchester (2021 - ongoing)</p>
+                <p>Building a statistical tool to simulate planets around stars, estimating the number and characteristics of undetected planets to optimize future observations and planet formation theories.</p>
+            </div>
+            <div class="project">
+                <h3>Simulation and prediction of exoplanet atmosphere</h3>
+                <p>NISER Bhubaneswar (2020 - 2021)</p>
+                <p>Modeled the atmosphere and simulated observations to predict the existence of HC₃N in a Super-Earth exoplanet GJ1132 b.</p>
+                <p>Publication: <a href="https://doi.org/10.3847/2041-8213/ac2f3a">Paper</a></p>
+            </div>
+            <div class="project">
+                <h3>Machine Learning model to improve detection of dark matter</h3>
+                <p>NISER Bhubaneswar (2020 - 2021)</p>
+                <p>Compared ML algorithms (Random Forest, SVM, Linear Regression, Neural Networks) to train and test a model over observational data. Improved accuracy of signal retrieval using Linear Regression and Random Forests.</p>
+                <p><a href="https://PriyadarshiAkshay.github.io/MLProject.html">Project report</a></p>
+            </div>
+        </section>
 
-    <section id="skills">
-        <h2>Skills & Certifications</h2>
-        <div class="skills">
-            <span class="skill">Python</span>
-            <span class="skill">GitHub</span>
-            <span class="skill">scikit-learn</span>
-            <span class="skill">pandas</span>
-            <span class="skill">seaborn</span>
-            <span class="skill">matplotlib</span>
-            <span class="skill">scipy</span>
-            <span class="skill">numpy</span>
-            <span class="skill">selenium</span>
-            <span class="skill">dynesty</span>
-            <span class="skill">beautifulsoup4</span>
-        </div>
-        <p>Certifications:</p>
-        <ul>
-            <li><a href="https://www.coursera.org/account/accomplishments/verify/Z28HBZ3592YW">AWS Cloud Technical Essentials</a></li>
-            <li><a href="https://www.credly.com/badges/4042e909-8f21-4f96-bd29-153db7ca5fb0/public_url">Databases and SQL for Data Science</a></li>
-            <li><a href="https://learn.deeplearning.ai/accomplishments/30a6ba77-5fea-490d-9d3f-c5347cc55c92?usp=sharing">LangChain (developing AI chatbot for personal data)</a></li>
-            <li><a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a></li>
-        </ul>
-    </section>
+        <section id="skills">
+            <h2>Skills & Certifications</h2>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">scikit-learn</span>
+                <span class="skill">pandas</span>
+                <span class="skill">seaborn</span>
+                <span class="skill">matplotlib</span>
+                <span class="skill">scipy</span>
+                <span class="skill">numpy</span>
+                <span class="skill">selenium</span>
+                <span class="skill">dynesty</span>
+                <span class="skill">beautifulsoup4</span>
+            </div>
+            <p>Certifications:</p>
+            <ul>
+                <li><a href="https://www.coursera.org/account/accomplishments/verify/Z28HBZ3592YW">AWS Cloud Technical Essentials</a></li>
+                <li><a href="https://www.credly.com/badges/4042e909-8f21-4f96-bd29-153db7ca5fb0/public_url">Databases and SQL for Data Science</a></li>
+                <li><a href="https://learn.deeplearning.ai/accomplishments/30a6ba77-5fea-490d-9d3f-c5347cc55c92?usp=sharing">LangChain (developing AI chatbot for personal data)</a></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a></li>
+            </ul>
+        </section>
 
-    <section id="teaching">
-        <h2>Teaching</h2>
-        <ul>
-            <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
-            <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
-        </ul>
-    </section>
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <ul>
+                <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
+                <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
+            </ul>
+        </section>
 
-    <section id="outreach">
-        <h2>Outreach and Leadership</h2>
-        <ul>
-            <li><a href="https://nam2024.hull.ac.uk/towards-100000-exoplanets/">Conference session organiser</a> at National Astronomy Meeting 2024, Hull</li>
-            <li><a href="https://sites.google.com/view/jbca-jacs/home?authuser=0">JACS</a> officer (2021-2023): Coordinated computing seminars at the University of Manchester's Astrophysics department</li>
-            <li>Presented talk on habitable exoplanets at <a href="https://pintofscience.co.uk/event/is-anybody-out-there">Pint of Science 2023</a></li>
-            <li>Hosted a JWST workshop at <a href="https://ukseds.org/ignition/wp-content/uploads/2023/03/NSSC-Brochure-2023-FINAL-v2_compressed.pdf">UKSEDS 2023</a></li>
-            <li>Exhibited at the JWST stand in the <a href="https://www.discoverthebluedot.com/">Bluedot festival</a>, 2021</li>
-        </ul>
-    </section>
+        <section id="outreach">
+            <h2>Outreach and Leadership</h2>
+            <ul>
+                <li><a href="https://nam2024.hull.ac.uk/towards-100000-exoplanets/">Conference session organiser</a> at National Astronomy Meeting 2024, Hull</li>
+                <li><a href="https://sites.google.com/view/jbca-jacs/home?authuser=0">JACS</a> officer (2021-2023): Coordinated computing seminars at the University of Manchester's Astrophysics department</li>
+                <li>Presented talk on habitable exoplanets at <a href="https://pintofscience.co.uk/event/is-anybody-out-there">Pint of Science 2023</a></li>
+                <li>Hosted a JWST workshop at <a href="https://ukseds.org/ignition/wp-content/uploads/2023/03/NSSC-Brochure-2023-FINAL-v2_compressed.pdf">UKSEDS 2023</a></li>
+                <li>Exhibited at the JWST stand in the <a href="https://www.discoverthebluedot.com/">Bluedot festival</a>, 2021</li>
+            </ul>
+        </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <p>✉️ <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
-            <p>🔗 <a href="https://www.linkedin.com/in/priyadarshiakshay/">LinkedIn</a> | <a href="https://github.com/PriyadarshiAkshay">GitHub</a></p>
-            <p>📍 Manchester, UK</p>
-        </div>
-    </section>
+        <section id="experience">
+          <h2>Experience</h2>
+          <div class="project">
+              <h3>Graduate Teaching Assistant</h3>
+              <p>The University of Manchester (Feb 2022 - June 2024)</p>
+              <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
+          </div>
+          <div class="project">
+              <h3>Visiting Student</h3>
+              <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
+              <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
+          </div>
+          <div class="project">
+              <h3>Summer Research Intern</h3>
+              <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
+              <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
+          </div>
+          <div class="project">
+              <h3>Summer Research Intern</h3>
+              <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
+              <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
+          </div>
+      </section>
+
+        <section id="honors">
+          <h2>Honors and Awards</h2>
+          <div class="project">
+              <h3>Silver Honour</h3>
+              <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
+              <p>Scored 92 percentile globally.</p>
+          </div>
+          <div class="project">
+              <h3>Finalist</h3>
+              <p>IISER Tirupati, Abhiprajna (May 2020)</p>
+              <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
+          </div>
+          <div class="project">
+              <h3>DST-INSPIRE Scholarship</h3>
+              <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education.5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
+          </div>
+      </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <p>✉️ <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
+                <p>🔗 <a href="https://www.linkedin.com/in/priyadarshiakshay/">LinkedIn</a> | <a href="https://github.com/PriyadarshiAkshay">GitHub</a></p>
+                <p>📍 Manchester, UK</p>
+            </div>
+        </section>
+    </div>
 
     <script>
         const modeToggle = document.getElementById('mode-toggle');

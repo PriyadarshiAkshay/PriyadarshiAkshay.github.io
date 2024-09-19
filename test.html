@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshay Priyadarshi - Astrophysics PhD Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --primary-color: #4a90e2;
+            --secondary-color: #2c3e50;
+            --card-bg: #ffffff;
+            --gradient-bg: linear-gradient(135deg, #4a90e2, #2c3e50);
+            --nav-height: 60px;
+        }
+        .dark-mode {
+            --bg-color: #1a2a3a;
+            --text-color: #ecf0f1;
+            --primary-color: #4a90e2;
+            --secondary-color: #ecf0f1;
+            --card-bg: #2c3e50;
+            --gradient-bg: linear-gradient(135deg, #2c3e50, #4a90e2);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-image: var(--gradient-bg);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            position: sticky;
+            top: var(--nav-height);
+            background-color: var(--bg-color);
+            z-index: 9;
+            transition: top 0.3s ease;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: var(--secondary-color);
+        }
+        .project {
+            background-color: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .project h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .skill {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .skill:hover {
+            transform: scale(1.05);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        #mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            z-index: 1000;
+        }
+        #mode-toggle:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        nav {
+            background-color: var(--card-bg);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            position: fixed;
+            top: 18px;
+            left: 10px;
+            z-index: 1001;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+        .contact-info {
+            background-image: var(--gradient-bg);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .social-link i {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        #hamburger-menu {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            header {
+                padding: 40px 0;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: var(--card-bg);
+                padding: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hamburger {
+                display: block;
+            }
+            h2 {
+                top: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="mode-toggle">🌙</button>
+    
+    <header>
+        <h1>Akshay Priyadarshi</h1>
+        <p>Astrophysics PhD Researcher</p>
+    </header>
+
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#outreach">Outreach</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#honors">Honors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="education">
+            <h2>Education</h2>
+            <div class="project">
+                <h3>PhD in Astronomy & Astrophysics</h3>
+                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
+                Funded by UKRI-STFC scholarship</p>
+            </div>
+            <div class="project">
+                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
+                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
+                Funded by DST-INSPIRE scholarship</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="project">
+                <h3>AI models and code evaluator</h3>
+                <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
+                <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
+            </div>
+            <div class="project">
+                <h3>TransitFit Python package</h3>
+                <p>JBCA, University of Manchester (2022 - ongoing)</p>
+                <p>Developed "TransitFit", a tool for exoplanet transmission spectroscopy. Enables detection of atmospheric molecules and determination of physical parameters in exoplanets.</p>
+                <p><a href="https://github.com/SPEARNET/TransitFit">GitHub Repository</a></p>
+            </div>
+            <div class="project">
+                <h3>Exoplanet Demographics Study</h3>
+                <p>JBCA, University of Manchester (2021 - ongoing)</p>
+                <p>Building a statistical tool to simulate planets around stars, estimating the number and characteristics of undetected planets to optimize future observations and planet formation theories.</p>
+            </div>
+            <div class="project">
+                <h3>Simulation and prediction of exoplanet atmosphere</h3>
+                <p>NISER Bhubaneswar (2020 - 2021)</p>
+                <p>Modeled the atmosphere and simulated observations to predict the existence of HC₃N in a Super-Earth exoplanet GJ1132 b.</p>
+                <p>Publication: <a href="https://doi.org/10.3847/2041-8213/ac2f3a">Paper</a></p>
+            </div>
+            <div class="project">
+                <h3>Machine Learning model to improve detection of dark matter</h3>
+                <p>NISER Bhubaneswar (2020 - 2021)</p>
+                <p>Compared ML algorithms (Random Forest, SVM, Linear Regression, Neural Networks) to train and test a model over observational data. Improved accuracy of signal retrieval using Linear Regression and Random Forests.</p>
+                <p><a href="https://PriyadarshiAkshay.github.io/MLProject.html">Project report</a></p>
+            </div>
+        </section>
+
+        <section id="publications"></section>
+            <h2>Publications</h2>
+            <ul>
+                <li><a href="https://doi.org/10.1093/mnrasl/slae083">Transit Timing Variation of K2-237b: Hints Toward Planet Disk Migration</a> <em>MNRAS Letters, 2024</em></li>
+                <li><a href="https://doi.org/10.1093/mnras/stad3353">TransitFit: combined multi-instrument exoplanet transit fitting for JWST, HST, and ground-based transmission spectroscopy studies</a> <em>MNRAS, 2023</em></li>
+                <li><a href="https://doi.org/10.3847/1538-3881/acfeea">Revisiting the Transit Timing and Atmosphere Characterization of the Neptune-mass Planet HAT-P-26 b</a> <em>The Astronomical Journal, 2023</em></li>
+                <li><a href="https://doi.org/10.3847/2041-8213/ac2f3a">Detectable Abundance of Cyanoacetylene (HC3N) Predicted on Reduced Nitrogen-rich Super-Earth Atmospheres</a> <em>The Astrophysical Journal Letters, 2021</em></li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Certifications</h2>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">GitHub</span>
+                <span class="skill">scikit-learn</span>
+                <span class="skill">pandas</span>
+                <span class="skill">seaborn</span>
+                <span class="skill">matplotlib</span>
+                <span class="skill">scipy</span>
+                <span class="skill">numpy</span>
+                <span class="skill">selenium</span>
+                <span class="skill">dynesty</span>
+                <span class="skill">beautifulsoup4</span>
+            </div>
+            <p>Certifications:</p>
+            <ul>
+                <li><a href="https://www.coursera.org/account/accomplishments/verify/Z28HBZ3592YW">AWS Cloud Technical Essentials</a></li>
+                <li><a href="https://www.credly.com/badges/4042e909-8f21-4f96-bd29-153db7ca5fb0/public_url">Databases and SQL for Data Science</a></li>
+                <li><a href="https://learn.deeplearning.ai/accomplishments/30a6ba77-5fea-490d-9d3f-c5347cc55c92?usp=sharing">LangChain (developing AI chatbot for personal data)</a></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a></li>
+            </ul>
+        </section>
+
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <ul>
+                <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
+                <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
+            </ul>
+        </section>
+
+
+        <section id="outreach">
+            <h2>Outreach and Leadership</h2>
+            <ul>
+                <li><a href="https://nam2024.hull.ac.uk/towards-100000-exoplanets/">Conference session organiser</a> at National Astronomy Meeting 2024, Hull</li>
+
+                <li>UKEXOM, 2024: <a href="http://www.exocommunity.uk/">Presented</a> exoplanet demographics study</li>
+
+                <li>UK National Astronomy Meeting, 2023: <a href="https://nam2023.org/science/parallel-sessions/details/2/38">Presented</a> exoplanet demographics study</li>
+
+                <li>European Astronomical Meeting, 2023: <a href="https://eas2023programme.kuoni-congress.info/presentation/transitfit-a-python-package-for-fitting-multi-instrument-exoplanet-transit-from-jwst-hst-and-ground-based-transmission-spectroscopy-studies">Presented</a> TransitFit</li>
+
+                <li>Strange New Worlds Conference, 2023: <a href="https://www.iiserpune.ac.in/events/3515/exoplanet-conference-at-iiser-pune">Presented</a> exoplanet demographics study</li>
+
+                <li><a href="https://sites.google.com/view/jbca-jacs/home?authuser=0">JACS</a> officer (2021-2023): Coordinated computing seminars at the University of Manchester's Astrophysics department</li>
+
+                <li>Presented talk on habitable exoplanets at <a href="https://pintofscience.co.uk/event/is-anybody-out-there">Pint of Science 2023</a></li>
+
+                <li>Hosted a JWST workshop at <a href="https://ukseds.org/ignition/wp-content/uploads/2023/03/NSSC-Brochure-2023-FINAL-v2_compressed.pdf">UKSEDS 2023</a></li>
+
+                <li>Exhibited at the JWST stand in the <a href="https://www.discoverthebluedot.com/">Bluedot festival</a>, 2021</li>
+
+            </ul>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="project">
+                <h3>AI models and code evaluator</h3>
+                <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
+                <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
+            </div>
+            <div class="project">
+                <h3>Graduate Teaching Assistant</h3>
+                <p>The University of Manchester (Feb 2022 - June 2024)</p>
+                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
+            </div>
+            <div class="project">
+                <h3>Visiting Student</h3>
+                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
+                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
+                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
+                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
+            </div>
+        </section>
+  
+          <section id="honors">
+            <h2>Honors and Awards</h2>
+            <div class="project">
+                <h3>UKRI-STFC Scholarship</h3>
+                <p>3.5-year scholarship from UKRI. </p>
+            </div>
+            <div class="project">
+                <h3>DST-INSPIRE Scholarship</h3>
+                <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
+            </div>
+            <div class="project">
+                <h3>Silver Honour</h3>
+                <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
+                <p>Scored 92 percentile globally.</p>
+            </div>
+            <div class="project">
+                <h3>Finalist</h3>
+                <p>IISER Tirupati, Abhiprajna (May 2020)</p>
+                <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Manchester, UK</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/priyadarshiakshay/" class="social-link">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/PriyadarshiAkshay" class="social-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0003-1143-0877" class="social-link">
+                        <i class="fab fa-orcid"></i> ORCID
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        function setTheme(isDark) {
+            body.classList.toggle('dark-mode', isDark);
+            modeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        // Check for saved user preference, otherwise check system preference
+        const savedTheme = localStorage.getItem('darkMode');
+        if (savedTheme !== null) {
+            setTheme(savedTheme === 'true');
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme(true);
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            setTheme(e.matches);
+        });
+
+        modeToggle.addEventListener('click', () => {
+            setTheme(!body.classList.contains('dark-mode'));
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        const sectionHeaders = Array.from(document.querySelectorAll('h2'));
+        const nav = document.querySelector('nav');
+        const navHeight = nav.offsetHeight;
+
+        function updateStickyHeaders() {
+            const scrollPosition = window.pageYOffset + navHeight;
+
+            // Find the current section
+            const currentSectionIndex = sectionHeaders.findIndex((header, index) => {
+                const nextHeader = sectionHeaders[index + 1];
+                const sectionBottom = nextHeader ? nextHeader.offsetTop : document.body.scrollHeight;
+                return scrollPosition >= header.offsetTop && scrollPosition < sectionBottom;
+            });
+
+            sectionHeaders.forEach((header, index) => {
+                if (index === currentSectionIndex) {
+                    header.style.position = 'sticky';
+                    header.style.top = `${navHeight}px`;
+                    header.style.zIndex = '9';
+                } else {
+                    header.style.position = 'static';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateStickyHeaders);
+        window.addEventListener('resize', updateStickyHeaders);
+        updateStickyHeaders(); // Initial call
+
+        // Hamburger menu functionality
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        }
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('nav-menu');
+                navMenu.classList.remove('show');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                navMenu.classList.remove('show');
+            }
+        });
+
+        // Overscroll effect
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+
+        function handleOverscroll() {
+            const currentScrollY = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            if (currentScrollY <= 0) {
+                // Overscroll at the top
+                document.body.style.marginTop = `${Math.abs(currentScrollY) / 3}px`;
+            } else if (currentScrollY + windowHeight >= documentHeight) {
+                // Overscroll at the bottom
+                document.body.style.marginBottom = `${(currentScrollY + windowHeight - documentHeight) / 3}px`;
+            } else {
+                // Reset margins
+                document.body.style.marginTop = '0';
+                document.body.style.marginBottom = '0';
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(handleOverscroll);
+                ticking = true;
+            }
+        });
+
+        // Reset margins when scroll ends
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                document.body.style.marginTop = '0';
+                document.body.style.marginBottom = '0';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

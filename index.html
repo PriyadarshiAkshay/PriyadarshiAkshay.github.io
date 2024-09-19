@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akshay Priyadarshi - Astrophysics PhD researcher</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #f8f9fa;
@@ -170,6 +171,28 @@
         .contact-info a:hover {
             opacity: 0.8;
         }
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .social-link i {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
         #hamburger-menu {
             display: none;
             position: fixed;
@@ -337,6 +360,11 @@
         <section id="experience">
           <h2>Experience</h2>
           <div class="project">
+            <h3>AI models and code evaluator</h3>
+            <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
+            <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
+        </div>
+          <div class="project">
               <h3>Graduate Teaching Assistant</h3>
               <p>The University of Manchester (Feb 2022 - June 2024)</p>
               <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
@@ -361,6 +389,14 @@
         <section id="honors">
           <h2>Honors and Awards</h2>
           <div class="project">
+            <h3>UKRI-STFC Scholarship</h3>
+            <p>3.5-year scholarship from UKRI. </p>
+        </div>
+        <div class="project">
+            <h3>DST-INSPIRE Scholarship</h3>
+            <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
+        </div>
+          <div class="project">
               <h3>Silver Honour</h3>
               <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
               <p>Scored 92 percentile globally.</p>
@@ -370,20 +406,26 @@
               <p>IISER Tirupati, Abhiprajna (May 2020)</p>
               <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
           </div>
-          <div class="project">
-              <h3>DST-INSPIRE Scholarship</h3>
-              <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education.5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
-          </div>
       </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <div class="contact-info">
-                <p>✉️ <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
-                <p>🔗 <a href="https://www.linkedin.com/in/priyadarshiakshay/">LinkedIn</a> | <a href="https://github.com/PriyadarshiAkshay">GitHub</a></p>
-                <p>📍 Manchester, UK</p>
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> Manchester, UK</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/priyadarshiakshay/" class="social-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/PriyadarshiAkshay" class="social-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://orcid.org/my-orcid?orcid=0000-0003-1143-0877" class="social-link">
+                    <i class="fab fa-orcid"></i> ORCID
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
     </div>
 
     <script>

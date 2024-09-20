@@ -215,7 +215,9 @@
             margin-right: 5px;
             font-size: 1.2em;
         }
-
+        .nav-title {
+            display: none;
+        }
         #hamburger-menu {
             display: none;
             position: fixed;
@@ -270,6 +272,29 @@
                 top: 15px;
                 transition: top 0.3s;
             }
+
+            nav {
+                display: none;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            nav.scrolled {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(0);
+            }
+
+            .nav-title {
+                display: none;
+                font-weight: bold;
+                font-size: 1.2em;
+                margin-right: 10px;
+            }
+
+            nav.scrolled .nav-title {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -282,6 +307,7 @@
     </header>
 
     <nav>
+        <div class="nav-title">Akshay Priyadarshi</div>
         <div class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -618,6 +644,23 @@
                 document.body.style.marginBottom = '0';
             }, 100);
         });
+
+        function handleScroll() {
+            const nav = document.querySelector('nav');
+            const scrollPosition = window.pageYOffset;
+
+            if (window.innerWidth <= 768) {
+                if (scrollPosition > 0) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll(); // Initial call
     </script>
 </body>
 </html>

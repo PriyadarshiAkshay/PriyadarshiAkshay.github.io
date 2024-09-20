@@ -265,20 +265,24 @@
             nav ul li {
                 margin: 0px 0;
             }
-            .hamburger {
-                display: block;
-            }
+            
             #mode-toggle {
                 top: 15px;
                 transition: top 0.3s;
             }
 
             nav {
-                display: none;
+                padding: 0px;
+                height: 0px;
                 transition: transform 0.3s ease-in-out;
             }
-
+            nav .hamburger {
+                display: block;
+                transition: transform 0.3s ease-in-out;
+            }
             nav.scrolled {
+                padding: 10px 0;
+                height: var(--nav-height);
                 display: flex;
                 justify-content: center;
                 align-items: center;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akshay Priyadarshi - Astrophysics PhD researcher</title>
+    <title>Akshay Priyadarshi - Astrophysics PhD Researcher</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,6 +14,7 @@
             --secondary-color: #2c3e50;
             --card-bg: #ffffff;
             --gradient-bg: linear-gradient(135deg, #4a90e2, #2c3e50);
+            --nav-height: 60px;
         }
         .dark-mode {
             --bg-color: #1a2a3a;
@@ -27,34 +28,40 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.8;
             color: var(--text-color);
-            max-width: 1000px;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-image: var(--gradient-bg);
-            background-attachment: fixed;
-            transition: background-color 0.3s, color 0.3s;
         }
-        h1, h2, h3 {
-            color: var(--secondary-color);
-            font-weight: 600;
+        header {
+            background-image: var(--gradient-bg);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 40px;
         }
         h1 {
             font-size: 3em;
-            text-align: center;
-            color: var(--primary-color);
+            margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
         }
         h2 {
             font-size: 2em;
-            margin-top: 40px;
+            color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
             margin-top: 40px;
             position: sticky;
-            top: 20px; /* Adjust based on your nav height */
+            top: var(--nav-height);
             background-color: var(--bg-color);
-            z-index: 10;
+            z-index: 9;
+            transition: top 0.3s ease;
         }
         a {
             color: var(--primary-color);
@@ -63,14 +70,6 @@
         }
         a:hover {
             color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        .content-wrapper {
-            background-color: var(--bg-color);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-top: 50px;
         }
         .project {
             background-color: var(--card-bg);
@@ -96,7 +95,7 @@
         }
         .skill {
             background-color: var(--primary-color);
-            color: var(--bg-color);
+            color: white;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9em;
@@ -105,10 +104,11 @@
         .skill:hover {
             transform: scale(1.05);
             background-color: var(--secondary-color);
+            color: var(--primary-color);
         }
         #mode-toggle {
             position: fixed;
-            top: 20px;
+            top: 85px;
             right: 20px;
             background-color: var(--primary-color);
             color: white;
@@ -119,42 +119,65 @@
             transition: background-color 0.3s, transform 0.3s;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            z-index:1001;
+            z-index: 1000;
         }
         #mode-toggle:hover {
             background-color: var(--secondary-color);
             transform: scale(1.05);
         }
-        .nav-buttons {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index:1000;
-        }
-        .nav-button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s, color 0.3s;
-            width: 200px;
-            height: 50px;
+        nav {
+            background-color: var(--card-bg);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: var(--nav-height);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2em;
-            font-weight: 600;
         }
-        .nav-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--bg-color);
-            transform: scale(1.1);
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            position: fixed;
+            top: 18px;
+            left: 10px;
+            z-index: 1001;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
         }
         .contact-info {
             background-image: var(--gradient-bg);
@@ -207,56 +230,83 @@
             cursor: pointer;
         }
         @media (max-width: 768px) {
-            .nav-buttons {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 20px;
-                right: 20px;
-                background-color: var(--bg-color);
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            .container {
+                padding: 10px;
             }
-            .nav-buttons.show {
+            header {
+                padding: 40px 0;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: var(--card-bg);
+                padding: 0px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            nav ul.show {
                 display: flex;
             }
-            .nav-button {
-                width: 100%;
+            nav ul li {
+                margin: 0px 0;
             }
-            #hamburger-menu {
+            .hamburger {
                 display: block;
+            }
+            #mode-toggle {
+                top: 15px;
+                transition: top 0.3s;
             }
         }
     </style>
 </head>
 <body>
     <button id="mode-toggle">🌙</button>
-    <button id="hamburger-menu">☰</button>
-    <div class="nav-buttons">
-        <button class="nav-button" onclick="scrollToSection('education')">Education</button>
-        <button class="nav-button" onclick="scrollToSection('projects')">Projects</button>
-        <button class="nav-button" onclick="scrollToSection('publications')">Publications</button>
-        <button class="nav-button" onclick="scrollToSection('skills')">Skills</button>
-        <button class="nav-button" onclick="scrollToSection('teaching')">Teaching</button>
-        <button class="nav-button" onclick="scrollToSection('outreach')">Outreach</button>
-        <button class="nav-button" onclick="scrollToSection('experience')">Experience</button>
-        <button class="nav-button" onclick="scrollToSection('honors')">Honors</button>
-        <button class="nav-button" onclick="scrollToSection('contact')">Contact</button>
-    </div>
-
-    <div class="content-wrapper">
+    
+    <header>
         <h1>Akshay Priyadarshi</h1>
+        <p>Astrophysics PhD Researcher</p>
+    </header>
 
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#outreach">Outreach</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#honors">Honors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
         <section id="education">
             <h2>Education</h2>
-            <p><strong>PhD in Astronomy & Astrophysics</strong><br>
-            University of Manchester (2021 - 2025 <em>expected</em>)<br>
-            Funded by UKRI-STFC scholarship</p>
-            
-            <p><strong>Integrated MSc in Physics & minor in Computer Science</strong><br>
-            NISER Bhubaneswar, India (2016 - 2021)<br>
-            Funded by DST-INSPIRE scholarship</p>
+            <div class="project">
+                <h3>PhD in Astronomy & Astrophysics</h3>
+                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
+                Funded by UKRI-STFC scholarship</p>
+            </div>
+            <div class="project">
+                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
+                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
+                Funded by DST-INSPIRE scholarship</p>
+            </div>
         </section>
 
         <section id="projects">
@@ -333,6 +383,7 @@
             </ul>
         </section>
 
+
         <section id="outreach">
             <h2>Outreach and Leadership</h2>
             <ul>
@@ -358,83 +409,80 @@
         </section>
 
         <section id="experience">
-          <h2>Experience</h2>
-          <div class="project">
-            <h3>AI models and code evaluator</h3>
-            <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
-            <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
-        </div>
-          <div class="project">
-              <h3>Graduate Teaching Assistant</h3>
-              <p>The University of Manchester (Feb 2022 - June 2024)</p>
-              <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
-          </div>
-          <div class="project">
-              <h3>Visiting Student</h3>
-              <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
-              <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
-          </div>
-          <div class="project">
-              <h3>Summer Research Intern</h3>
-              <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
-              <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
-          </div>
-          <div class="project">
-              <h3>Summer Research Intern</h3>
-              <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
-              <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
-          </div>
-      </section>
-
-        <section id="honors">
-          <h2>Honors and Awards</h2>
-          <div class="project">
-            <h3>UKRI-STFC Scholarship</h3>
-            <p>3.5-year scholarship from UKRI. </p>
-        </div>
-        <div class="project">
-            <h3>DST-INSPIRE Scholarship</h3>
-            <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
-        </div>
-          <div class="project">
-              <h3>Silver Honour</h3>
-              <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
-              <p>Scored 92 percentile globally.</p>
-          </div>
-          <div class="project">
-              <h3>Finalist</h3>
-              <p>IISER Tirupati, Abhiprajna (May 2020)</p>
-              <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
-          </div>
-      </section>
-
-      <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-info">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
-            <p><i class="fas fa-map-marker-alt"></i> Manchester, UK</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/priyadarshiakshay/" class="social-link">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/PriyadarshiAkshay" class="social-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="https://orcid.org/my-orcid?orcid=0000-0003-1143-0877" class="social-link">
-                    <i class="fab fa-orcid"></i> ORCID
-                </a>
+            <h2>Experience</h2>
+            <div class="project">
+                <h3>AI models and code evaluator</h3>
+                <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
+                <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
             </div>
-        </div>
-    </section>
+            <div class="project">
+                <h3>Graduate Teaching Assistant</h3>
+                <p>The University of Manchester (Feb 2022 - June 2024)</p>
+                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
+            </div>
+            <div class="project">
+                <h3>Visiting Student</h3>
+                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
+                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
+                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
+                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
+            </div>
+        </section>
+  
+          <section id="honors">
+            <h2>Honors and Awards</h2>
+            <div class="project">
+                <h3>UKRI-STFC Scholarship</h3>
+                <p>3.5-year scholarship from UKRI. </p>
+            </div>
+            <div class="project">
+                <h3>DST-INSPIRE Scholarship</h3>
+                <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
+            </div>
+            <div class="project">
+                <h3>Silver Honour</h3>
+                <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
+                <p>Scored 92 percentile globally.</p>
+            </div>
+            <div class="project">
+                <h3>Finalist</h3>
+                <p>IISER Tirupati, Abhiprajna (May 2020)</p>
+                <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Manchester, UK</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/priyadarshiakshay/" class="social-link">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/PriyadarshiAkshay" class="social-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0003-1143-0877" class="social-link">
+                        <i class="fab fa-orcid"></i> ORCID
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
         const modeToggle = document.getElementById('mode-toggle');
         const body = document.body;
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const navButtons = document.querySelector('.nav-buttons');
 
-        // Function to set the theme
         function setTheme(isDark) {
             body.classList.toggle('dark-mode', isDark);
             modeToggle.textContent = isDark ? '☀️' : '🌙';
@@ -449,35 +497,47 @@
             setTheme(true);
         }
 
-        // Listen for changes in color scheme preference
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
             setTheme(e.matches);
         });
 
-        // Toggle theme when button is clicked
         modeToggle.addEventListener('click', () => {
             setTheme(!body.classList.contains('dark-mode'));
         });
 
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            section.scrollIntoView({ behavior: 'smooth' });
-            if (window.innerWidth <= 768) {
-                navButtons.classList.remove('show');
-            }
-        }
-        // Sticky headers
-        const sectionHeaders = document.querySelectorAll('h2');
-        const navHeight = document.querySelector('nav').offsetHeight;
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        const sectionHeaders = Array.from(document.querySelectorAll('h2'));
+        const nav = document.querySelector('nav');
+        const navHeight = nav.offsetHeight;
 
         function updateStickyHeaders() {
+            const scrollPosition = window.pageYOffset + navHeight;
+
+            // Find the current section
+            const currentSectionIndex = sectionHeaders.findIndex((header, index) => {
+                const nextHeader = sectionHeaders[index + 1];
+                const sectionBottom = nextHeader ? nextHeader.offsetTop : document.body.scrollHeight;
+                return scrollPosition >= header.offsetTop && scrollPosition < sectionBottom;
+            });
+
             sectionHeaders.forEach((header, index) => {
-                const section = header.parentElement;
-                const rect = section.getBoundingClientRect();
-                
-                if (rect.top <= navHeight && rect.bottom > navHeight) {
+                if (index === currentSectionIndex) {
                     header.style.position = 'sticky';
                     header.style.top = `${navHeight}px`;
+                    header.style.zIndex = '9';
                 } else {
                     header.style.position = 'static';
                 }
@@ -485,25 +545,72 @@
         }
 
         window.addEventListener('scroll', updateStickyHeaders);
+        window.addEventListener('resize', updateStickyHeaders);
         updateStickyHeaders(); // Initial call
 
         // Hamburger menu functionality
-        hamburgerMenu.addEventListener('click', () => {
-            navButtons.classList.toggle('show');
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        }
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('nav-menu');
+                navMenu.classList.remove('show');
+            });
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (event) => {
-            if (!navButtons.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                navButtons.classList.remove('show');
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
+            if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                navMenu.classList.remove('show');
             }
         });
 
-        // Adjust menu visibility on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                navButtons.classList.remove('show');
+        // Overscroll effect
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+
+        function handleOverscroll() {
+            const currentScrollY = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            if (currentScrollY <= 0) {
+                // Overscroll at the top
+                document.body.style.marginTop = `${Math.abs(currentScrollY) / 3}px`;
+            } else if (currentScrollY + windowHeight >= documentHeight) {
+                // Overscroll at the bottom
+                document.body.style.marginBottom = `${(currentScrollY + windowHeight - documentHeight) / 3}px`;
+            } else {
+                // Reset margins
+                document.body.style.marginTop = '0';
+                document.body.style.marginBottom = '0';
             }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(handleOverscroll);
+                ticking = true;
+            }
+        });
+
+        // Reset margins when scroll ends
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                document.body.style.marginTop = '0';
+                document.body.style.marginBottom = '0';
+            }, 100);
         });
     </script>
 </body>

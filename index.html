@@ -303,6 +303,118 @@
                 display: block;
             }
         }
+
+        /* Updated and new animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project, .skill, .contact-info {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        h2 {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .social-link:hover {
+            animation: pulse 1s infinite;
+        }
+
+        #mode-toggle {
+            transition: all 0.5s ease;
+        }
+
+        #mode-toggle:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        header {
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        h1 {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .skill {
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project {
+            transition: all 0.5s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul li a::after {
+            transition: transform 0.5s ease;
+        }
+
+        /* Add a staggered animation delay for skills */
+        .skills .skill:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .skills .skill:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        /* Add a subtle hover effect to navigation links */
+        nav ul li a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
     </style>
 </head>
 <body>
@@ -584,14 +696,18 @@
         // Hamburger menu functionality
         function toggleMenu() {
             const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
             navMenu.classList.toggle('show');
+            hamburger.classList.toggle('active');
         }
 
         // Close menu when a link is clicked
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 const navMenu = document.getElementById('nav-menu');
+                const hamburger = document.querySelector('.hamburger');
                 navMenu.classList.remove('show');
+                hamburger.classList.remove('active');
             });
         });
 
@@ -601,6 +717,7 @@
             const hamburger = document.querySelector('.hamburger');
             if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
                 navMenu.classList.remove('show');
+                hamburger.classList.remove('active');
             }
         });
 
@@ -631,6 +748,40 @@
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleScroll);
         handleScroll(); // Initial call
+
+        // Updated animateOnScroll function
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.project, .skill, .contact-info, h2');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+                if (isVisible) {
+                    el.style.visibility = 'visible';
+                    el.style.animation = 'fadeIn 0.8s ease-out forwards';
+                }
+            });
+        }
+
+        // Call the function on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Add smooth scrolling for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add parallax effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollPosition = window.pageYOffset;
+            header.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        });
     </script>
 </body>
 </html>

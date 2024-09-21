@@ -136,6 +136,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
         nav ul {
             list-style-type: none;
@@ -170,6 +171,7 @@
             z-index: 1001;
             background-color: var(--primary-color);
             border-radius: 5px;
+            transition: all 0.3s ease;
         }
         .hamburger span {
             display: block;
@@ -287,6 +289,7 @@
                 justify-content: center;
                 align-items: center;
                 transform: translateY(0);
+                transition: transform 0.3s ease-in-out;
             }
 
             .nav-title {
@@ -601,38 +604,6 @@
             }
         });
 
-        // Overscroll effect
-        let ticking = false;
-        let lastScrollY = window.scrollY;
-
-        function handleOverscroll() {
-            const currentScrollY = window.scrollY;
-            const documentHeight = document.documentElement.scrollHeight;
-            const windowHeight = window.innerHeight;
-
-            if (currentScrollY <= 0) {
-                // Overscroll at the top
-                document.body.style.marginTop = `${Math.abs(currentScrollY) / 3}px`;
-            } else if (currentScrollY + windowHeight >= documentHeight) {
-                // Overscroll at the bottom
-                document.body.style.marginBottom = `${(currentScrollY + windowHeight - documentHeight) / 3}px`;
-            } else {
-                // Reset margins
-                document.body.style.marginTop = '0';
-                document.body.style.marginBottom = '0';
-            }
-
-            lastScrollY = currentScrollY;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(handleOverscroll);
-                ticking = true;
-            }
-        });
-
         // Reset margins when scroll ends
         let scrollTimeout;
         window.addEventListener('scroll', () => {
@@ -645,10 +616,11 @@
 
         function handleScroll() {
             const nav = document.querySelector('nav');
-            const scrollPosition = window.pageYOffset;
+            const scrollPosition = window.pageYOffset + nav.offsetHeight;
+            const header = document.querySelector('header');
 
             if (window.innerWidth <= 768) {
-                if (scrollPosition > 0) {
+                if (scrollPosition > header.offsetHeight) {
                     nav.classList.add('scrolled');
                 } else {
                     nav.classList.remove('scrolled');

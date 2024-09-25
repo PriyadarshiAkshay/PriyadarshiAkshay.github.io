@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Akshay Priyadarshi - Astrophysics PhD Researcher</title>
+    <meta name="description" content="Akshay Priyadarshi: Astrophysics PhD Researcher at the University of Manchester. Developing tools for exoplanet research, specializing in exoplanet demographics and transmission spectroscopy.">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -301,6 +304,18 @@
 
             nav.scrolled .nav-title {
                 display: block;
+            }
+
+            h2 {
+                top: var(--nav-height);
+            }
+
+            nav {
+                z-index: 100; /* Ensure nav is above sticky headers */
+            }
+
+            section {
+                scroll-margin-top: calc(var(--nav-height) + 20px);
             }
         }
 
@@ -650,20 +665,21 @@
             setTheme(!body.classList.contains('dark-mode'));
         });
 
-        // Smooth scrolling for navigation links
+        // Update the smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; // Added extra 20px for padding
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
             });
         });
+
         const sectionHeaders = Array.from(document.querySelectorAll('h2'));
         const nav = document.querySelector('nav');
         const navHeight = nav.offsetHeight;
@@ -739,10 +755,25 @@
             if (window.innerWidth <= 768) {
                 if (scrollPosition > header.offsetHeight) {
                     nav.classList.add('scrolled');
+                    document.body.style.paddingTop = nav.offsetHeight + 'px';
                 } else {
                     nav.classList.remove('scrolled');
+                    document.body.style.paddingTop = '0';
                 }
+            } else {
+                document.body.style.paddingTop = '0';
             }
+
+            // Update sticky headers
+            const stickyHeaders = document.querySelectorAll('h2');
+            const navHeight = nav.offsetHeight;
+            stickyHeaders.forEach(header => {
+                if (window.innerWidth <= 768) {
+                    header.style.top = navHeight + 'px';
+                } else {
+                    header.style.top = (navHeight) + 'px';
+                }
+            });
         }
 
         window.addEventListener('scroll', handleScroll);
@@ -770,7 +801,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             });

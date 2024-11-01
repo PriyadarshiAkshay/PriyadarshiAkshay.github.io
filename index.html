@@ -139,7 +139,7 @@
             transform: scale(1.05);
         }
         nav {
-            background-color: var(--card-bg);
+            background-color: rgb(from var(--card-bg) r g b / 0.9);
             padding: 10px 0;
             position: sticky;
             top: 0;
@@ -253,6 +253,13 @@
                 transition: top 0.3s;
             }
         }
+        @media (min-width: 769px) {
+            nav {
+            background-color: rgb(from var(--card-bg) r g b / 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            }
+        }
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -268,18 +275,25 @@
                 flex-direction: column;
                 align-items: center;
                 position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: var(--card-bg);
-                padding: 0px;
+                top: 15px;
+                left: 13px;
+                background-color: rgb(from var(--card-bg) r g b / 0.4);
+                padding: 10px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 0;
+                border: 2px solid rgba(0, 0, 0, 0.1);
             }
             nav ul.show {
                 display: flex;
+                top: 0;
+                opacity: 1;
             }
             nav ul li {
                 margin: 0px 0;
+                transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
             }
             
             #mode-toggle {
@@ -295,6 +309,9 @@
             nav .hamburger {
                 display: block;
                 transition: transform 0.3s ease-in-out;
+            }
+            .hamburger.active {
+                transform: rotate(90deg);
             }
             nav.scrolled {
                 padding: 10px 0;
@@ -701,70 +718,30 @@
             <span></span>
         </div>
         <ul id="nav-menu">
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#publications">Publications</a></li>
             <li><a href="#honors">Honors</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#outreach">Outreach</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    <div class="profile-description">
-        <p>Builds Python packages and does data analysis for astrophysics.<br>
-        <span class="highlight">Actively looking for Data Science roles.</span></p>
-    </div>
     <div class="container">
-        <section id="education">
-            <h2>Education</h2>
-            <div class="project">
-                <h3>PhD in Astronomy & Astrophysics</h3>
-                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
-                Funded by UKRI-STFC scholarship</p>
-            </div>
-            <div class="project">
-                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
-                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
-                Funded by DST-INSPIRE scholarship</p>
-            </div>
-        </section>
+        <h2>About Me</h2>
+        <p>Passionate about turning complex data into actionable insights. Skilled in Python, Machine Learning, Data Visualization, and Statistical Analysis.<br>
+        <span class="highlight">Actively looking for Data Science roles.</span></p>
 
-        <section id="experience">
-            <h2>Experience</h2>
+        <section id="projects">
+            
+            <h2>Featured Projects</h2>
             <div class="project">
                 <h3>AI models and code evaluator</h3>
                 <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
                 <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
             </div>
-            <div class="project">
-                <h3>Graduate Teaching Assistant</h3>
-                <p>The University of Manchester (Feb 2022 - June 2024)</p>
-                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
-                <ul>
-                <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
-                <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
-            </ul>
-            </div>
-            <div class="project">
-                <h3>Visiting Student</h3>
-                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
-                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
-            </div>
-            <div class="project">
-                <h3>Summer Research Intern</h3>
-                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
-                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
-            </div>
-            <div class="project">
-                <h3>Summer Research Intern</h3>
-                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
-                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
-            </div>
-        </section>
 
-        <section id="projects">
-            <h2>Featured Projects</h2>
             <div class="project">
                 <h3>TransitFit Python package</h3>
                 <p>JBCA, University of Manchester (2022 - ongoing)</p>
@@ -826,7 +803,19 @@
                 <li><a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a></li>
             </ul>
         </section>
-
+        <section id="education">
+            <h2>Education</h2>
+            <div class="project">
+                <h3>PhD in Astronomy & Astrophysics</h3>
+                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
+                Funded by UKRI-STFC scholarship</p>
+            </div>
+            <div class="project">
+                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
+                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
+                Funded by DST-INSPIRE scholarship</p>
+            </div>
+        </section>
         <section id="publications"></section>
             <h2>Publications</h2>
             <ul>
@@ -856,6 +845,34 @@
                 <h3>Finalist</h3>
                 <p>IISER Tirupati, Abhiprajna (May 2020)</p>
                 <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
+            </div>
+        </section>
+        <section id="experience">
+            <h2>Other Experience</h2>
+            
+            <div class="project">
+                <h3>Graduate Teaching Assistant</h3>
+                <p>The University of Manchester (Feb 2022 - June 2024)</p>
+                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
+                <ul>
+                <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
+                <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
+            </ul>
+            </div>
+            <div class="project">
+                <h3>Visiting Student</h3>
+                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
+                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
+                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
+                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
             </div>
         </section>
 

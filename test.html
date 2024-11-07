@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Akshay Priyadarshi - Astrophysics PhD Researcher</title>
+    <meta name="description" content="Akshay Priyadarshi: Astrophysics PhD Researcher at the University of Manchester. Developing tools for exoplanet research, specializing in exoplanet demographics and transmission spectroscopy.">
+    <meta property="og:title" content="Akshay Priyadarshi: Astrophysics PhD Researcher" />
+    <meta property="og:url" content="https://priyadarshiakshay.github.io/" />
+    <meta property="og:description" content="Akshay Priyadarshi: Astrophysics PhD Researcher at the University of Manchester. Developing tools for exoplanet research, specializing in exoplanet demographics and transmission spectroscopy." />
+    <meta property="og:image" content="akshay.jpg" />
+
+
+
+
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --bg-color: #f8f9fa;
             --text-color: #333;
-            --primary-color: #4a90e2;
-            --secondary-color: #2c3e50;
+            --primary-color: #6b5b95;
+            --secondary-color: #23395d;
             --card-bg: #ffffff;
-            --gradient-bg: linear-gradient(135deg, #4a90e2, #2c3e50);
-            --nav-height: 60px;
+            --gradient-bg: linear-gradient(135deg, #6b5b95, #23395d);
+            --nav-height: 80px;
         }
         .dark-mode {
-            --bg-color: #1a2a3a;
+            --bg-color: #0a1929;
             --text-color: #ecf0f1;
-            --primary-color: #4a90e2;
+            --primary-color: #8e44ad;
             --secondary-color: #ecf0f1;
-            --card-bg: #2c3e50;
-            --gradient-bg: linear-gradient(135deg, #2c3e50, #4a90e2);
+            --card-bg: #1a2634;
+            --gradient-bg: linear-gradient(135deg, #1a2634, #8e44ad);
         }
         body {
             font-family: 'Poppins', sans-serif;
@@ -32,34 +47,53 @@
             padding: 0;
             background-color: var(--bg-color);
             transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Add this */
+            /*width: 100%; /* Add this */
+            position: relative; /* Add this */
+            width: 100%;
+            min-height: 100vh;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
+            width: 100%;
+            position: relative;
         }
         header {
             background-image: var(--gradient-bg);
             color: white;
             text-align: center;
-            padding: 60px 0;
+            padding: 0px 0;
+            margin:0;
             margin-bottom: 40px;
         }
         h1 {
             font-size: 3em;
             margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            padding-right: 15px;
+            padding-left: 15px;
         }
         h2 {
+            position: sticky;
+            font-size: 2em;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            top: var(--nav-height);
+            background-color: var(--bg-color);
+            z-index: 99;
+            transition: top 0.3s ease;
+        }
+        h4 {
             font-size: 2em;
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
             margin-top: 40px;
             position: sticky;
-            top: var(--nav-height);
-            background-color: var(--bg-color);
             z-index: 9;
             transition: top 0.3s ease;
         }
@@ -108,7 +142,7 @@
         }
         #mode-toggle {
             position: fixed;
-            top: 20px;
+            top: 85px;
             right: 20px;
             background-color: var(--primary-color);
             color: white;
@@ -120,15 +154,16 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             z-index: 1000;
+            max-width: 80px; /* Add this */
         }
         #mode-toggle:hover {
             background-color: var(--secondary-color);
             transform: scale(1.05);
         }
         nav {
-            background-color: var(--card-bg);
-            padding: 10px 0;
             position: sticky;
+            background-color: rgb(from var(--card-bg) r g b / 0.9);
+            padding: 10px;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -136,10 +171,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            margin-top: 20px;
         }
         nav ul {
             list-style-type: none;
-            padding: 0;
+            padding: 10;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -170,11 +207,12 @@
             z-index: 1001;
             background-color: var(--primary-color);
             border-radius: 5px;
+            transition: all 0.3s ease;
         }
         .hamburger span {
             display: block;
-            width: 25px;
-            height: 3px;
+            width: 30px;
+            height: 2px;
             background-color: white;
             margin: 5px 0;
             transition: 0.4s;
@@ -215,7 +253,9 @@
             margin-right: 5px;
             font-size: 1.2em;
         }
-
+        .nav-title {
+            display: none;
+        }
         #hamburger-menu {
             display: none;
             position: fixed;
@@ -229,9 +269,26 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        @media (min-width: 1404px) {
+            #mode-toggle {
+                top: 20px;
+                transition: top 0.3s;
+            }
+        }
+
+        @media (min-width: 769px) {
+            nav {
+            background-color: rgb(from var(--card-bg) r g b / 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            }
+        }
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0 10px; /* Optional: adjust padding as needed */
             }
             header {
                 padding: 40px 0;
@@ -244,24 +301,633 @@
                 flex-direction: column;
                 align-items: center;
                 position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: var(--card-bg);
-                padding: 20px;
+                top: 10px;
+                background-color: rgb(from var(--card-bg) r g b / 0.4);
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 0;
+                border: 2px solid rgba(0, 0, 0, 0.1);
             }
             nav ul.show {
                 display: flex;
+                top: 10px;
+                left:10px;
+                opacity: 1;
             }
             nav ul li {
-                margin: 10px 0;
+                padding-left:15px;
+                margin: 0px 0;
+                transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
             }
-            .hamburger {
+            
+            #mode-toggle {
+                top: 15px;
+                transition: top 0.3s;
+                right: 10px; /* Reduce right spacing */
+                padding: 8px 16px; /* Make button smaller */
+                font-size: 14px; /* Reduce font size */
+            }
+
+            nav {
+                padding: 0px;
+                height: 0px;
+                transition: transform 0.3s ease-in-out;
+            }
+            nav .hamburger {
+                display: block;
+                transition: transform 0.3s ease-in-out;
+            }
+            .hamburger.active {
+                transform: rotate(90deg);
+            }
+            nav.scrolled {
+                padding: 10px 0;
+                height: var(--nav-height);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(0);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .nav-title {
+                display: none;
+                font-weight: bold;
+                font-size: 1.2em;
+                margin-right: 10px;
+            }
+
+            nav.scrolled .nav-title {
                 display: block;
             }
+
             h2 {
-                top: 60px;
+                top: var(--nav-height);
+            }
+
+            nav {
+                z-index: 100; 
+            }
+
+            section {
+                scroll-margin-top: calc(var(--nav-height) + 20px);
+            }
+
+            /* Ensure all content stays within viewport */
+            img, video, .project-image {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .header-content {
+                padding: 100px 10px 80px 10px; /* Add horizontal padding */
+            }
+        }
+        @media (max-width: 567px) {
+            h1{
+                margin-top: 18px;
+                transition: margin-top 0.3s;
+            }
+        }
+        @media (max-width: 526px) {
+            /* Reduce general text size */
+            body {
+                font-size: 0.9em;
+            }
+            
+            /* Reduce header sizes */
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+            
+            h3 {
+                font-size: 1.3em;
+            }
+            
+            h4 {
+                font-size: 1.6em;
+            }
+
+            /* Reduce project description text */
+            .project p {
+                font-size: 0.9em;
+            }
+            
+            /* Reduce skill tag size */
+            .skill {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+            
+            /* Reduce profile description */
+            .profile-description p {
+                font-size: 1em;
+            }
+
+            /* Adjust header content padding */
+            .header-content {
+                padding: 60px 10px 40px 10px;
+            }
+            
+            /* Adjust contact info text */
+            .contact-info p {
+                font-size: 0.8em !important;
+            }
+            .header-text p {
+                font-size: 1em !important; /* Override inline style */
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .fas, .fab {
+                font-size: 0.9em !important;
+            }
+        }
+        @media (max-width: 386px) {
+            /* Reduce general text size */
+            body {
+                font-size: 0.8em;
+            }
+            
+            /* Reduce header sizes */
+            h1 {
+                font-size: 1.7em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            h3 {
+                font-size: 1.2em;
+            }
+            
+            h4 {
+                font-size: 1.5em;
+            }
+
+            /* Reduce project description text */
+            .project p {
+                font-size: 0.7em;
+            }
+            
+            /* Reduce skill tag size */
+            .skill {
+                font-size: 0.6em;
+                padding: 4px 9px;
+            }
+            
+            /* Reduce profile description */
+            .profile-description p {
+                font-size: .9em;
+            }
+
+            /* Adjust header content padding */
+            .header-content {
+                padding: 40px 7px 30px 7px;
+            }
+            
+            /* Adjust contact info text */
+            .contact-info {
+                font-size: 0.3em !important;
+            }
+            .header-text p {
+                font-size: .7em !important; /* Override inline style */
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+            .fas, .fab {
+                font-size: 0.7em !important;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project, .skill, .contact-info {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        h2 {
+            animation: slideIn 0.8s ease-out;
+        }
+        h4 {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .social-link:hover {
+            animation: pulse 1s infinite;
+        }
+
+        #mode-toggle {
+            transition: all 0.5s ease;
+        }
+
+        #mode-toggle:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        header {
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        h1 {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .skill {
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project {
+            transition: all 0.5s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul li a::after {
+            transition: transform 0.5s ease;
+        }
+
+        .skills .skill:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .skills .skill:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        nav ul li a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 100px 0px 80px 0px;
+            margin-bottom: -40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 300px;
+            max-width: 100%;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                /*gap: 20px;*/
+            }
+            
+            .profile-image {
+                width: 190px;
+                height: 190px;
+            }
+        }
+
+        .profile-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto -45px;
+            padding: 10px;
+            background: var(--card-bg);
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .profile-description p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .profile-description .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .profile-description {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+            
+            .profile-description p {
+                font-size: 1.1em;
+            }
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-image:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .project-image {
+                max-width: 100%;
+            }
+        }
+
+        .particles-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .project {
+            border-left: 4px solid var(--primary-color);
+            background: linear-gradient(to right, var(--card-bg) 0%, rgba(107, 91, 149, 0.1) 100%);
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -8px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .skills {
+            position: relative;
+        }
+
+        .skill {
+            position: relative;
+            background: var(--primary-color);
+        }
+
+        .skill::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: skillConnect 2s infinite;
+        }
+
+        @keyframes skillConnect {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .container::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(var(--primary-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+        ul {
+            list-style: none;
+        }
+
+        ul li::before {
+            content: '';
+            color: var(--primary-color);
+            font-size: 0.8em;
+            margin-right: 10px;
+            opacity: 0.8;
+        }
+        .project {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                var(--primary-color) var(--scroll, 0%), 
+                transparent var(--scroll, 0%));
+            transition: --scroll 0.3s ease;
+        }
+        .data-point {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        .skill {
+            background: linear-gradient(45deg, 
+                var(--primary-color), 
+                var(--secondary-color));
+            background-size: 200% 200%;
+            animation: gradientMove 5s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .planetary-system {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #fff7d6 0%, #ffd700 50%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ffd700;
+            left: 23%;
+            top: 6%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .planet-orbit {
+            position: absolute;
+            border: .2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            left: 23%;
+            top: 6%;
+            transform: translate(-50%, -50%);
+        }
+        @media (max-width: 965px) {
+            .star {
+                top: 6.5%;
+                left: 30%;
+            }
+            .planet-orbit {
+                top: 6.5%;
+                left: 30%;
+            }
+        }
+        @media (max-width: 768px) {
+            .star {
+                top: 6%;
+                left: 30%;
+            }
+            .planet-orbit {
+                top: 6%;
+                left: 30%;
+            }
+        }
+        @media (max-width: 628px) {
+            .star {
+                top: 5.7%;
+                left: 40%;
+            }
+            .planet-orbit {
+                top: 5.7%;
+                left: 40%;
+            }
+        }
+        @media (max-width: 500px) {
+            .star {
+                top: 5.3%;
+                left: 40%;
+            }
+            .planet-orbit {
+                top: 5.3%;
+                left: 40%;
+            }
+        }
+
+        .dark-mode .planet-orbit {
+            border: .1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: 50% 50%;
+        }
+
+        @keyframes orbit {
+            from { 
+                transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle))); 
+            }
+            to { 
+                transform: rotate(calc(var(--start-angle) + 360deg)) translateX(var(--orbit-radius)) rotate(calc(-1 * (var(--start-angle) + 360deg))); 
             }
         }
     </style>
@@ -270,54 +936,59 @@
     <button id="mode-toggle">🌙</button>
     
     <header>
-        <h1>Akshay Priyadarshi</h1>
-        <p>Astrophysics PhD Researcher</p>
+        <div class="planetary-system">
+            <div class="star"></div>
+        </div>
+        <div class="header-content">
+            <img src="akshay.jpg" alt="Akshay Priyadarshi" class="profile-image">
+            <div class="header-text">
+                <h1>Akshay Priyadarshi</h1>
+                <p>Astrophysics PhD Researcher</p>
+                <p style="font-weight: bold; color: white; font-size: 1.2em; padding-left: 20px; padding-right: 20px;">
+                    <i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com" style="color: white;">priyadarshi.akshay@outlook.com</a> | 
+                    <i class="fas fa-map-marker-alt"></i> Manchester, UK | 
+                    <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/priyadarshiakshay/" style="color: white;">LinkedIn</a>
+                </p>
+            </div>
+        </div>
     </header>
 
     <nav>
+        <div class="nav-title">Akshay Priyadarshi</div>
         <div class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
         <ul id="nav-menu">
-            <li><a href="#education">Education</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#publications">Publications</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#teaching">Teaching</a></li>
-            <li><a href="#outreach">Outreach</a></li>
-            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#honors">Honors</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#outreach">Outreach</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-
-    <div class="container">
-        <section id="education">
-            <h2>Education</h2>
-            <div class="project">
-                <h3>PhD in Astronomy & Astrophysics</h3>
-                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
-                Funded by UKRI-STFC scholarship</p>
-            </div>
-            <div class="project">
-                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
-                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
-                Funded by DST-INSPIRE scholarship</p>
-            </div>
-        </section>
+    <div class="container" style="z-index: 2; position: relative;">
+        <h4>About Me</h4>
+        <p>Passionate about turning complex data into actionable insights. Skilled in Python, Machine Learning, Data Visualization, and Statistical Analysis.<br>
+        <span class="highlight">Actively looking for Data Science roles.</span></p>
 
         <section id="projects">
+            
             <h2>Featured Projects</h2>
             <div class="project">
                 <h3>AI models and code evaluator</h3>
                 <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
                 <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
             </div>
+
             <div class="project">
                 <h3>TransitFit Python package</h3>
                 <p>JBCA, University of Manchester (2022 - ongoing)</p>
+                <img src="transitfit.jpeg" alt="TransitFit visualization" class="project-image">
                 <p>Developed "TransitFit", a tool for exoplanet transmission spectroscopy. Enables detection of atmospheric molecules and determination of physical parameters in exoplanets.</p>
                 <p><a href="https://github.com/SPEARNET/TransitFit">GitHub Repository</a></p>
             </div>
@@ -338,16 +1009,17 @@
                 <p>Compared ML algorithms (Random Forest, SVM, Linear Regression, Neural Networks) to train and test a model over observational data. Improved accuracy of signal retrieval using Linear Regression and Random Forests.</p>
                 <p><a href="https://PriyadarshiAkshay.github.io/MLProject.html">Project report</a></p>
             </div>
-        </section>
-
-        <section id="publications"></section>
-            <h2>Publications</h2>
-            <ul>
-                <li><a href="https://doi.org/10.1093/mnrasl/slae083">Transit Timing Variation of K2-237b: Hints Toward Planet Disk Migration</a> <em>MNRAS Letters, 2024</em></li>
-                <li><a href="https://doi.org/10.1093/mnras/stad3353">TransitFit: combined multi-instrument exoplanet transit fitting for JWST, HST, and ground-based transmission spectroscopy studies</a> <em>MNRAS, 2023</em></li>
-                <li><a href="https://doi.org/10.3847/1538-3881/acfeea">Revisiting the Transit Timing and Atmosphere Characterization of the Neptune-mass Planet HAT-P-26 b</a> <em>The Astronomical Journal, 2023</em></li>
-                <li><a href="https://doi.org/10.3847/2041-8213/ac2f3a">Detectable Abundance of Cyanoacetylene (HC3N) Predicted on Reduced Nitrogen-rich Super-Earth Atmospheres</a> <em>The Astrophysical Journal Letters, 2021</em></li>
-            </ul>
+            <div class="project">
+                <h3>Football Match Data Analysis and Visualization</h3>
+                <video src="football_vis.webm" class="project-image" autoplay loop muted></video>
+                <p>Data analysis and visualization tool for football matches using Python, focusing on World Cup data. Shot maps and passing networks, using matplotlib and mplsoccer to provide actionable insights. Machine learning techniques for data binarization and feature encoding, enhancing the accuracy of event tagging and player performance metric.</p>
+                <p><a href="https://github.com/PriyadarshiAkshay/football_visualisation">GitHub repo</a></p>
+            </div>
+            <div class="project">
+                <h3>summarAIzer: AI-Powered Research Paper Summarizer</h3>
+                <p>It leverages AI to fetch, process, and summarize recent research papers from arXiv. It cross verifies its information to minimise inaccuracies. It's designed to help researchers and enthusiasts stay up-to-date with the latest developments in science.</p>
+                <p><a href="https://github.com/PriyadarshiAkshay/summarAIzer">GitHub repo</a></p>
+            </div>
         </section>
 
         <section id="skills">
@@ -367,21 +1039,87 @@
             </div>
             <p>Certifications:</p>
             <ul>
+                <li><a href="https://www.coursera.org/account/accomplishments/records/J5ZXXN63KLRH">Data Analysis with R Programming</a></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/verify/FP3BHWHLT9YI">Introduction to PySpark</a></li>
+                <li><a href="https://www.coursera.org/account/accomplishments/verify/RZE94BA2S6EC">Hadoop and Spark on Google Cloud</a></li>                
                 <li><a href="https://www.coursera.org/account/accomplishments/verify/Z28HBZ3592YW">AWS Cloud Technical Essentials</a></li>
                 <li><a href="https://www.credly.com/badges/4042e909-8f21-4f96-bd29-153db7ca5fb0/public_url">Databases and SQL for Data Science</a></li>
                 <li><a href="https://learn.deeplearning.ai/accomplishments/30a6ba77-5fea-490d-9d3f-c5347cc55c92?usp=sharing">LangChain (developing AI chatbot for personal data)</a></li>
                 <li><a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a></li>
             </ul>
         </section>
-
-        <section id="teaching">
-            <h2>Teaching</h2>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="project">
+                <h3>PhD in Astronomy & Astrophysics</h3>
+                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
+                Funded by UKRI-STFC scholarship</p>
+            </div>
+            <div class="project">
+                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
+                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
+                Funded by DST-INSPIRE scholarship</p>
+            </div>
+        </section>
+        <section id="publications"></section>
+            <h2>Publications</h2>
             <ul>
+                <li><a href="https://doi.org/10.1093/mnrasl/slae083">Transit Timing Variation of K2-237b: Hints Toward Planet Disk Migration</a> <em>MNRAS Letters, 2024</em></li>
+                <li><a href="https://doi.org/10.1093/mnras/stad3353">TransitFit: combined multi-instrument exoplanet transit fitting for JWST, HST, and ground-based transmission spectroscopy studies</a> <em>MNRAS, 2023</em></li>
+                <li><a href="https://doi.org/10.3847/1538-3881/acfeea">Revisiting the Transit Timing and Atmosphere Characterization of the Neptune-mass Planet HAT-P-26 b</a> <em>The Astronomical Journal, 2023</em></li>
+                <li><a href="https://doi.org/10.3847/2041-8213/ac2f3a">Detectable Abundance of Cyanoacetylene (HC3N) Predicted on Reduced Nitrogen-rich Super-Earth Atmospheres</a> <em>The Astrophysical Journal Letters, 2021</em></li>
+            </ul>
+        </section>
+     
+          <section id="honors">
+            <h2>Honors and Awards</h2>
+            <div class="project">
+                <h3>UKRI-STFC Scholarship</h3>
+                <p>3.5-year scholarship from UKRI. </p>
+            </div>
+            <div class="project">
+                <h3>DST-INSPIRE Scholarship</h3>
+                <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
+            </div>
+            <div class="project">
+                <h3>Silver Honour</h3>
+                <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
+                <p>Scored 92 percentile globally.</p>
+            </div>
+            <div class="project">
+                <h3>Finalist</h3>
+                <p>IISER Tirupati, Abhiprajna (May 2020)</p>
+                <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
+            </div>
+        </section>
+        <section id="experience">
+            <h2>Other Experience</h2>
+            
+            <div class="project">
+                <h3>Graduate Teaching Assistant</h3>
+                <p>The University of Manchester (Feb 2022 - June 2024)</p>
+                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
+                <ul>
                 <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
                 <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
             </ul>
+            </div>
+            <div class="project">
+                <h3>Visiting Student</h3>
+                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
+                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
+                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
+            </div>
+            <div class="project">
+                <h3>Summer Research Intern</h3>
+                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
+                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
+            </div>
         </section>
-
 
         <section id="outreach">
             <h2>Outreach and Leadership</h2>
@@ -405,57 +1143,6 @@
                 <li>Exhibited at the JWST stand in the <a href="https://www.discoverthebluedot.com/">Bluedot festival</a>, 2021</li>
 
             </ul>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="project">
-                <h3>AI models and code evaluator</h3>
-                <p>DataAnnotation (Part-time) (2024 - ongoing)</p>
-                <p>Evaluating and comparing AI models and their code generation capabilities, providing feedback for continuous model improvement.</p>
-            </div>
-            <div class="project">
-                <h3>Graduate Teaching Assistant</h3>
-                <p>The University of Manchester (Feb 2022 - June 2024)</p>
-                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
-            </div>
-            <div class="project">
-                <h3>Visiting Student</h3>
-                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
-                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
-            </div>
-            <div class="project">
-                <h3>Summer Research Intern</h3>
-                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
-                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
-            </div>
-            <div class="project">
-                <h3>Summer Research Intern</h3>
-                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
-                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
-            </div>
-        </section>
-  
-          <section id="honors">
-            <h2>Honors and Awards</h2>
-            <div class="project">
-                <h3>UKRI-STFC Scholarship</h3>
-                <p>3.5-year scholarship from UKRI. </p>
-            </div>
-            <div class="project">
-                <h3>DST-INSPIRE Scholarship</h3>
-                <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
-            </div>
-            <div class="project">
-                <h3>Silver Honour</h3>
-                <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
-                <p>Scored 92 percentile globally.</p>
-            </div>
-            <div class="project">
-                <h3>Finalist</h3>
-                <p>IISER Tirupati, Abhiprajna (May 2020)</p>
-                <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
-            </div>
         </section>
 
         <section id="contact">
@@ -504,60 +1191,40 @@
             setTheme(!body.classList.contains('dark-mode'));
         });
 
-        // Smooth scrolling for navigation links
+        // Update the smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; // Added extra 20px for padding
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
             });
         });
+
         const sectionHeaders = Array.from(document.querySelectorAll('h2'));
         const nav = document.querySelector('nav');
         const navHeight = nav.offsetHeight;
 
-        function updateStickyHeaders() {
-            const scrollPosition = window.pageYOffset + navHeight;
-
-            // Find the current section
-            const currentSectionIndex = sectionHeaders.findIndex((header, index) => {
-                const nextHeader = sectionHeaders[index + 1];
-                const sectionBottom = nextHeader ? nextHeader.offsetTop : document.body.scrollHeight;
-                return scrollPosition >= header.offsetTop && scrollPosition < sectionBottom;
-            });
-
-            sectionHeaders.forEach((header, index) => {
-                if (index === currentSectionIndex) {
-                    header.style.position = 'sticky';
-                    header.style.top = `${navHeight}px`;
-                    header.style.zIndex = '9';
-                } else {
-                    header.style.position = 'static';
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateStickyHeaders);
-        window.addEventListener('resize', updateStickyHeaders);
-        updateStickyHeaders(); // Initial call
-
         // Hamburger menu functionality
         function toggleMenu() {
             const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.querySelector('.hamburger');
             navMenu.classList.toggle('show');
+            hamburger.classList.toggle('active');
         }
 
         // Close menu when a link is clicked
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 const navMenu = document.getElementById('nav-menu');
+                const hamburger = document.querySelector('.hamburger');
                 navMenu.classList.remove('show');
+                hamburger.classList.remove('active');
             });
         });
 
@@ -567,38 +1234,7 @@
             const hamburger = document.querySelector('.hamburger');
             if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
                 navMenu.classList.remove('show');
-            }
-        });
-
-        // Overscroll effect
-        let ticking = false;
-        let lastScrollY = window.scrollY;
-
-        function handleOverscroll() {
-            const currentScrollY = window.scrollY;
-            const documentHeight = document.documentElement.scrollHeight;
-            const windowHeight = window.innerHeight;
-
-            if (currentScrollY <= 0) {
-                // Overscroll at the top
-                document.body.style.marginTop = `${Math.abs(currentScrollY) / 3}px`;
-            } else if (currentScrollY + windowHeight >= documentHeight) {
-                // Overscroll at the bottom
-                document.body.style.marginBottom = `${(currentScrollY + windowHeight - documentHeight) / 3}px`;
-            } else {
-                // Reset margins
-                document.body.style.marginTop = '0';
-                document.body.style.marginBottom = '0';
-            }
-
-            lastScrollY = currentScrollY;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(handleOverscroll);
-                ticking = true;
+                hamburger.classList.remove('active');
             }
         });
 
@@ -610,6 +1246,259 @@
                 document.body.style.marginTop = '0';
                 document.body.style.marginBottom = '0';
             }, 100);
+        });
+
+        function handleScroll() {
+            const nav = document.querySelector('nav');
+            const scrollPosition = window.pageYOffset + nav.offsetHeight;
+            const header = document.querySelector('header');
+
+            if (window.innerWidth <= 768) {
+                if (scrollPosition > header.offsetHeight) {
+                    nav.classList.add('scrolled');
+                    document.body.style.paddingTop = nav.offsetHeight + 'px';
+                } else {
+                    nav.classList.remove('scrolled');
+                    document.body.style.paddingTop = '0';
+                }
+            } else {
+                document.body.style.paddingTop = '0';
+            }
+
+            // Update sticky headers
+            const stickyHeaders = document.querySelectorAll('h2');
+            const navHeight = nav.offsetHeight;
+            stickyHeaders.forEach(header => {
+                if (window.innerWidth <= 768) {
+                    header.style.top = navHeight + 'px';
+                } else {
+                    header.style.top = (navHeight) + 'px';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll(); // Initial call
+
+        // Updated animateOnScroll function
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.project, .skill, .contact-info, h2');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+                if (isVisible) {
+                    el.style.visibility = 'visible';
+                    el.style.animation = 'fadeIn 0.8s ease-out forwards';
+                }
+            });
+        }
+
+        // Call the function on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Add smooth scrolling for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add parallax effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollPosition = window.pageYOffset;
+            header.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        });
+
+        // Create particle background
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles-background';
+            document.body.appendChild(particlesContainer);
+
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 3}px;
+                    height: ${Math.random() * 3}px;
+                    background: ${Math.random() > 0.5 ? 'var(--primary-color)' : 'var(--secondary-color)'};
+                    border-radius: 50%;
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
+                    opacity: ${Math.random() * 0.5};
+                    animation: float ${5 + Math.random() * 10}s infinite linear;
+                `;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Add data visualization animation to project cards
+        document.querySelectorAll('.project').forEach(project => {
+            project.addEventListener('mouseenter', () => {
+                project.style.transform = 'translateX(10px)';
+                project.style.boxShadow = '0 0 20px rgba(107, 91, 149, 0.3)';
+            });
+
+            project.addEventListener('mouseleave', () => {
+                project.style.transform = 'translateX(0)';
+                project.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Add random data points to project cards
+        function addDataPoints() {
+            document.querySelectorAll('.project').forEach(project => {
+                for (let i = 0; i < 5; i++) {
+                    const point = document.createElement('div');
+                    point.className = 'data-point';
+                    point.style.left = `${Math.random() * 100}%`;
+                    point.style.top = `${Math.random() * 100}%`;
+                    project.appendChild(point);
+                }
+            });
+        }
+
+        // Add progress bar animation to project cards
+        function updateProjectProgress() {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                const rect = project.getBoundingClientRect();
+                const visible = rect.top < window.innerHeight && rect.bottom > 0;
+                if (visible) {
+                    const scrollPercentage = Math.min(
+                        100,
+                        Math.max(
+                            0,
+                            ((window.innerHeight - rect.top) / rect.height) * 100
+                        )
+                    );
+                    project.style.setProperty('--scroll', `${scrollPercentage}%`);
+                }
+            });
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            addDataPoints();
+            window.addEventListener('scroll', updateProjectProgress);
+            updateProjectProgress();
+        });
+
+        // Add interactive hover effect for skills
+        document.querySelectorAll('.skill').forEach(skill => {
+            skill.addEventListener('mouseover', () => {
+                const skills = document.querySelectorAll('.skill');
+                const index = Array.from(skills).indexOf(skill);
+                skills.forEach((s, i) => {
+                    const distance = Math.abs(i - index);
+                    s.style.transform = `scale(${1 + (3 - distance) * 0.05})`;
+                    s.style.opacity = 1 - (distance * 0.2);
+                });
+            });
+
+            skill.addEventListener('mouseout', () => {
+                document.querySelectorAll('.skill').forEach(s => {
+                    s.style.transform = '';
+                    s.style.opacity = '';
+                });
+            });
+        });
+
+        // Add subtle parallax effect to data points
+        document.addEventListener('mousemove', (e) => {
+            const points = document.querySelectorAll('.data-point');
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            points.forEach(point => {
+                const speed = Math.random() * 20;
+                point.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+            });
+        });
+
+        // Planetary system animation
+        function createPlanetarySystem() {
+            const system = document.querySelector('.planetary-system');
+            const planets = [
+                { size: 15, color: '#ff6b6b', orbitRadius: 120, speed: 20 },
+                { size: 25, color: '#4ecdc4', orbitRadius: 200, speed: 30 },
+                { size: 20, color: '#45b7d1', orbitRadius: 280, speed: 40 },
+                { size: 18, color: '#96ceb4', orbitRadius: 350, speed: 50 }
+            ];
+
+            planets.forEach((planetData, index) => {
+                const orbit = document.createElement('div');
+                orbit.className = 'planet-orbit';
+                orbit.style.width = `${planetData.orbitRadius * 2}px`;
+                orbit.style.height = `${planetData.orbitRadius * 2}px`;
+
+                const planet = document.createElement('div');
+                planet.className = 'planet';
+                planet.style.width = `${planetData.size}px`;
+                planet.style.height = `${planetData.size}px`;
+                planet.style.background = planetData.color;
+                planet.style.boxShadow = `0 0 ${planetData.size/2}px ${planetData.color}`;
+                planet.style.left = '50%';
+                planet.style.top = '50%';
+                planet.style.setProperty('--orbit-radius', `${planetData.orbitRadius}px`);
+                
+                const startAngle = Math.random() * 360;
+                planet.style.setProperty('--start-angle', `${startAngle}deg`);
+                planet.style.setProperty('--orbit-radius', `${planetData.orbitRadius}px`);
+                
+                // Apply animation with timing function
+                planet.style.animation = `orbit ${planetData.speed}s linear infinite`;
+                planet.style.transform = `rotate(${startAngle}deg) translateX(${planetData.orbitRadius}px) rotate(-${startAngle}deg)`;
+
+                orbit.appendChild(planet);
+                system.appendChild(orbit);
+            });
+        }
+
+        // Add mouse parallax effect to planetary system
+        function addParallaxEffect() {
+            const system = document.querySelector('.planetary-system');
+            const star = document.querySelector('.star');
+            const planets = document.querySelectorAll('.planet');
+            const orbits = document.querySelectorAll('.planet-orbit');
+
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+                const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+
+                // Move star
+                star.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
+                
+                // Move orbits and planets
+                orbits.forEach((orbit, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const offsetX = mouseX * speed;
+                    const offsetY = mouseY * speed;
+                    
+                    // Move the orbit
+                    orbit.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+                });
+            });
+        }
+
+        // Initialize planetary system
+        document.addEventListener('DOMContentLoaded', () => {
+            createPlanetarySystem();
+            addParallaxEffect();
         });
     </script>
 </body>

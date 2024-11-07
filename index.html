@@ -339,7 +339,7 @@
             }
 
             nav {
-                z-index: 100; /* Ensure nav is above sticky headers */
+                z-index: 100; 
             }
 
             section {
@@ -353,7 +353,6 @@
             }
         }
         
-        /* Updated and new animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -434,7 +433,6 @@
             transition: transform 0.5s ease;
         }
 
-        /* Add a staggered animation delay for skills */
         .skills .skill:nth-child(odd) {
             animation-delay: 0.2s;
         }
@@ -443,7 +441,6 @@
             animation-delay: 0.4s;
         }
 
-        /* Add a subtle hover effect to navigation links */
         nav ul li a {
             position: relative;
             overflow: hidden;
@@ -471,8 +468,10 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            padding: 60px 0px 40px 0px;
+            padding: 100px 0px 80px 0px;
             margin-bottom: -40px;
+            position: relative;
+            z-index: 2;
         }
 
         .profile-image {
@@ -562,7 +561,6 @@
             }
         }
 
-        /* Add floating particles background */
         .particles-background {
             position: fixed;
             top: 0;
@@ -573,13 +571,11 @@
             pointer-events: none;
         }
 
-        /* Update project cards with data visualization style */
         .project {
             border-left: 4px solid var(--primary-color);
             background: linear-gradient(to right, var(--card-bg) 0%, rgba(107, 91, 149, 0.1) 100%);
         }
 
-        /* Add data points decoration */
         .project::before {
             content: '';
             position: absolute;
@@ -591,7 +587,6 @@
             border-radius: 50%;
         }
 
-        /* Add constellation effect to skills section */
         .skills {
             position: relative;
         }
@@ -631,7 +626,6 @@
             z-index: -1;
             pointer-events: none;
         }
-        /* Astronomy-themed list bullets */
         ul {
             list-style: none;
         }
@@ -643,7 +637,6 @@
             margin-right: 10px;
             opacity: 0.8;
         }
-        /* Interactive project cards with data visualization */
         .project {
             position: relative;
             overflow: hidden;
@@ -676,7 +669,6 @@
             50% { transform: scale(1.5); opacity: 0.8; }
             100% { transform: scale(1); opacity: 0.5; }
         }
-        /* Animated background for skills */
         .skill {
             background: linear-gradient(45deg, 
                 var(--primary-color), 
@@ -690,12 +682,66 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        .planetary-system {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #fff7d6 0%, #ffd700 50%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ffd700;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .planet-orbit {
+            position: absolute;
+            border: .2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dark-mode .planet-orbit {
+            border: .1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: 50% 50%;
+        }
+
+        @keyframes orbit {
+            from { 
+                transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle))); 
+            }
+            to { 
+                transform: rotate(calc(var(--start-angle) + 360deg)) translateX(var(--orbit-radius)) rotate(calc(-1 * (var(--start-angle) + 360deg))); 
+            }
+        }
     </style>
 </head>
 <body>
     <button id="mode-toggle">🌙</button>
     
     <header>
+        <div class="planetary-system">
+            <div class="star"></div>
+        </div>
         <div class="header-content">
             <img src="akshay.jpg" alt="Akshay Priyadarshi" class="profile-image">
             <div class="header-text">
@@ -1210,6 +1256,77 @@
                 const speed = Math.random() * 20;
                 point.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
             });
+        });
+
+        // Planetary system animation
+        function createPlanetarySystem() {
+            const system = document.querySelector('.planetary-system');
+            const planets = [
+                { size: 15, color: '#ff6b6b', orbitRadius: 120, speed: 20 },
+                { size: 25, color: '#4ecdc4', orbitRadius: 200, speed: 30 },
+                { size: 20, color: '#45b7d1', orbitRadius: 280, speed: 40 },
+                { size: 18, color: '#96ceb4', orbitRadius: 350, speed: 50 }
+            ];
+
+            planets.forEach((planetData, index) => {
+                const orbit = document.createElement('div');
+                orbit.className = 'planet-orbit';
+                orbit.style.width = `${planetData.orbitRadius * 2}px`;
+                orbit.style.height = `${planetData.orbitRadius * 2}px`;
+
+                const planet = document.createElement('div');
+                planet.className = 'planet';
+                planet.style.width = `${planetData.size}px`;
+                planet.style.height = `${planetData.size}px`;
+                planet.style.background = planetData.color;
+                planet.style.boxShadow = `0 0 ${planetData.size/2}px ${planetData.color}`;
+                planet.style.left = '50%';
+                planet.style.top = '50%';
+                planet.style.setProperty('--orbit-radius', `${planetData.orbitRadius}px`);
+                
+                const startAngle = Math.random() * 360;
+                planet.style.setProperty('--start-angle', `${startAngle}deg`);
+                planet.style.setProperty('--orbit-radius', `${planetData.orbitRadius}px`);
+                
+                // Apply animation with timing function
+                planet.style.animation = `orbit ${planetData.speed}s linear infinite`;
+                planet.style.transform = `rotate(${startAngle}deg) translateX(${planetData.orbitRadius}px) rotate(-${startAngle}deg)`;
+
+                orbit.appendChild(planet);
+                system.appendChild(orbit);
+            });
+        }
+
+        // Add mouse parallax effect to planetary system
+        function addParallaxEffect() {
+            const system = document.querySelector('.planetary-system');
+            const star = document.querySelector('.star');
+            const planets = document.querySelectorAll('.planet');
+            const orbits = document.querySelectorAll('.planet-orbit');
+
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+                const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+
+                // Move star
+                star.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
+                
+                // Move orbits and planets
+                orbits.forEach((orbit, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const offsetX = mouseX * speed;
+                    const offsetY = mouseY * speed;
+                    
+                    // Move the orbit
+                    orbit.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+                });
+            });
+        }
+
+        // Initialize planetary system
+        document.addEventListener('DOMContentLoaded', () => {
+            createPlanetarySystem();
+            addParallaxEffect();
         });
     </script>
 </body>

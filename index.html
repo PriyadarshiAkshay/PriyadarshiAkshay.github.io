@@ -25,37 +25,42 @@
         :root {
             --bg-color: #f8f9fa;
             --text-color: #2d3436;
-            --primary-color: #6c5ce7;
-            --secondary-color: #a29bfe;
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
             --card-bg: #ffffff;
-            --gradient-bg: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            --nav-height: 80px;
-            --border-radius: 16px;
+            --gradient-bg: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --nav-height: 70px;
+            --border-radius: 12px;
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --section-spacing: 80px;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Poppins', sans-serif;
         }
         .dark-mode {
             --bg-color: #0f172a;
             --text-color: #e2e8f0;
-            --primary-color: #818cf8;
-            --secondary-color: #c7d2fe;
+            --primary-color: #4cc9f0;
+            --secondary-color: #4361ee;
+            --accent-color: #7209b7;
             --card-bg: #1e293b;
-            --gradient-bg: linear-gradient(135deg, #1e293b, #818cf8);
+            --gradient-bg: linear-gradient(135deg, #3a0ca3, #4361ee);
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.8;
             color: var(--text-color);
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
             transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden; /* Add this */
-            /*width: 100%; /* Add this */
-            position: relative; /* Add this */
+            overflow-x: hidden;
+            position: relative;
             width: 100%;
             min-height: 100vh;
+            scroll-behavior: smooth;
         }
         .container {
             max-width: 1200px;
@@ -68,101 +73,281 @@
             background-image: var(--gradient-bg);
             color: white;
             text-align: center;
-            padding: 0px 0;
-            margin:0;
-            margin-bottom: 40px;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             padding-right: 15px;
             padding-left: 15px;
+            margin-bottom: 10px;
+            font-family: var(--font-heading);
         }
         h2 {
-            position: sticky;
+            position: relative;
             font-size: 2em;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 40px;
-            top: var(--nav-height);
-            background-color: var(--bg-color);
-            z-index: 99;
-            transition: top 0.3s ease;
+            padding-bottom: 15px;
+            margin-top: var(--section-spacing);
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            text-align: center;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        h3 {
+            font-size: 1.6em;
+            color: var(--text-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: var(--font-heading);
         }
         h4 {
             font-size: 2em;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
+            padding-bottom: 15px;
             margin-top: 40px;
-            position: sticky;
-            z-index: 9;
-            transition: top 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            font-family: var(--font-heading);
+        }
+        h4::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
         a {
             color: var(--primary-color);
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
         a:hover {
             color: var(--secondary-color);
         }
+        
+        nav {
+            position: sticky;
+            background-color: rgba(255, 255, 255, 0.95);
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            width: 100%;
+            padding: 0 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dark-mode nav {
+            background-color: rgba(30, 41, 59, 0.95);
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+        
+        nav ul li a:hover::after {
+            width: 70%;
+            opacity: 1;
+        }
         .project {
             background-color: var(--card-bg);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-color);
         }
+        
         .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
+        
         .project h3 {
             margin-top: 0;
             color: var(--primary-color);
+            font-size: 1.5em;
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
+        
+        .project h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            border-radius: 1.5px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
         }
+        
         .skill {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-        .skill:hover {
-            transform: scale(1.05);
-            background-color: var(--secondary-color);
+            background-color: var(--card-bg);
             color: var(--primary-color);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill:hover {
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            object-fit: cover;
+            max-height: 300px;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.02);
         }
         #mode-toggle {
             position: fixed;
-            top: 85px;
+            top: 20px;
             right: 20px;
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
+            transition: all 0.3s;
             z-index: 1000;
-            max-width: 80px; /* Add this */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         #mode-toggle:hover {
+            transform: rotate(180deg);
             background-color: var(--secondary-color);
-            transform: scale(1.05);
         }
         nav {
             position: sticky;
@@ -204,340 +389,42 @@
         .hamburger {
             display: none;
             cursor: pointer;
-            padding: 10px;
-            position: fixed;
-            top: 18px;
-            left: 10px;
-            z-index: 1001;
-            background-color: var(--primary-color);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .hamburger span {
-            display: block;
-            width: 30px;
-            height: 2px;
-            background-color: white;
-            margin: 5px 0;
-            transition: 0.4s;
-        }
-        .contact-info {
-            background-image: var(--gradient-bg);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-        }
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        .contact-info a:hover {
-            opacity: 0.8;
-        }
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .social-link:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .social-link i {
-            margin-right: 5px;
-            font-size: 1.2em;
-        }
-        .nav-title {
-            display: none;
-        }
-        #hamburger-menu {
-            display: none;
+            width: 50px;
+            height: 50px;
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 1000;
+            z-index: 1001;
             background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        @media (min-width: 1404px) {
-            #mode-toggle {
-                top: 20px;
-                transition: top 0.3s;
-            }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.4s;
         }
-
-        @media (min-width: 769px) {
-            nav {
-            background-color: rgb(from var(--card-bg) r g b / 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 5px);
         }
-        @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
-                width: 100%;
-                margin: 0;
-                padding: 0 10px; /* Optional: adjust padding as needed */
-            }
-            header {
-                padding: 40px 0;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            nav ul {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                position: fixed;
-                top: 10px;
-                background-color: rgb(from var(--card-bg) r g b / 0.4);
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
-                opacity: 0;
-                border: 2px solid rgba(0, 0, 0, 0.1);
-            }
-            nav ul.show {
-                display: flex;
-                top: 10px;
-                left:10px;
-                opacity: 1;
-            }
-            nav ul li {
-                padding-left:15px;
-                margin: 0px 0;
-                transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            }
-            
-            #mode-toggle {
-                top: 15px;
-                transition: top 0.3s;
-                right: 10px; /* Reduce right spacing */
-                padding: 8px 16px; /* Make button smaller */
-                font-size: 14px; /* Reduce font size */
-            }
-
-            nav {
-                padding: 0px;
-                height: 0px;
-                transition: transform 0.3s ease-in-out;
-            }
-            nav .hamburger {
-                display: block;
-                transition: transform 0.3s ease-in-out;
-            }
-            .hamburger.active {
-                transform: rotate(90deg);
-            }
-            nav.scrolled {
-                padding: 10px 0;
-                height: var(--nav-height);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transform: translateY(0);
-                transition: transform 0.3s ease-in-out;
-            }
-
-            .nav-title {
-                display: none;
-                font-weight: bold;
-                font-size: 1.2em;
-                margin-right: 10px;
-            }
-
-            nav.scrolled .nav-title {
-                display: block;
-            }
-
-            h2 {
-                top: var(--nav-height);
-            }
-
-            nav {
-                z-index: 100; 
-            }
-
-            section {
-                scroll-margin-top: calc(var(--nav-height) + 20px);
-            }
-
-            /* Ensure all content stays within viewport */
-            img, video, .project-image {
-                max-width: 100%;
-                height: auto;
-                display: block;
-            }
-
-            .header-content {
-                padding: 100px 10px 80px 10px; /* Add horizontal padding */
-            }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
         }
-        @media (max-width: 567px) {
-            h1{
-                margin-top: 18px;
-                transition: margin-top 0.3s;
-            }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -5px);
         }
-        @media (max-width: 526px) {
-            /* Reduce general text size */
-            body {
-                font-size: 0.9em;
-            }
-            
-            /* Reduce header sizes */
-            h1 {
-                font-size: 2em;
-            }
-            
-            h2 {
-                font-size: 1.6em;
-            }
-            
-            h3 {
-                font-size: 1.3em;
-            }
-            
-            h4 {
-                font-size: 1.6em;
-            }
-
-            /* Reduce project description text */
-            .project p {
-                font-size: 0.9em;
-            }
-            
-            /* Reduce skill tag size */
-            .skill {
-                font-size: 0.8em;
-                padding: 6px 12px;
-            }
-            
-            /* Reduce profile description */
-            .profile-description p {
-                font-size: 1em;
-            }
-
-            /* Adjust header content padding */
-            .header-content {
-                padding: 60px 10px 40px 10px;
-            }
-            
-            /* Adjust contact info text */
-            .contact-info p {
-                font-size: 0.8em !important;
-            }
-            .header-text p {
-                font-size: 1em !important; /* Override inline style */
-                padding-left: 10px !important;
-                padding-right: 10px !important;
-            }
-            .fas, .fab {
-                font-size: 0.9em !important;
-            }
-        }
-        @media (max-width: 386px) {
-            /* Reduce general text size */
-            body {
-                font-size: 0.8em;
-            }
-            
-            /* Reduce header sizes */
-            h1 {
-                font-size: 1.7em;
-            }
-            
-            h2 {
-                font-size: 1.5em;
-            }
-            
-            h3 {
-                font-size: 1.2em;
-            }
-            
-            h4 {
-                font-size: 1.5em;
-            }
-
-            /* Reduce project description text */
-            .project p {
-                font-size: 0.7em;
-            }
-            
-            /* Reduce skill tag size */
-            .skill {
-                font-size: 0.6em;
-                padding: 4px 9px;
-            }
-            
-            /* Reduce profile description */
-            .profile-description p {
-                font-size: .9em;
-            }
-
-            /* Adjust header content padding */
-            .header-content {
-                padding: 40px 7px 30px 7px;
-            }
-            
-            /* Adjust contact info text */
-            .contact-info {
-                font-size: 0.3em !important;
-            }
-            .header-text p {
-                font-size: .7em !important; /* Override inline style */
-                padding-left: 8px !important;
-                padding-right: 8px !important;
-            }
-            .fas, .fab {
-                font-size: 0.7em !important;
-            }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .project, .skill, .contact-info {
             opacity: 0;
             animation: fadeIn 0.8s ease-out forwards;
@@ -626,562 +513,1093 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
-            padding: 100px 0px 80px 0px;
-            margin-bottom: -40px;
+            padding: 100px 20px;
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
+        
         .profile-image {
-            width: 300px;
-            max-width: 100%;
-            height: 300px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            position: relative;
         }
-
+        
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+        
         .profile-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
-
+        
         .header-text {
+            text-align: left;
+            max-width: 600px;
+        }
+        
+        .header-text p {
+            font-size: 1.4em;
+            margin: 10px 0 25px 0;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            background-image: var(--gradient-bg);
+            color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-top: 50px;
             text-align: center;
         }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                /*gap: 20px;*/
-            }
-            
-            .profile-image {
-                width: 190px;
-                height: 190px;
-            }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
         }
-
+        
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+            justify-content: center;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .social-link:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .social-link i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
         .profile-description {
             text-align: center;
             max-width: 800px;
-            margin: 20px auto -45px;
-            padding: 10px;
+            margin: -30px auto 60px;
+            padding: 30px;
             background: var(--card-bg);
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: fadeIn 0.8s ease-out;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 5;
         }
-
+        
         .profile-description p {
-            font-size: 1.3em;
-            line-height: 1.6;
+            font-size: 1.2em;
+            line-height: 1.7;
             margin: 0;
             color: var(--text-color);
         }
-
+        
         .profile-description .highlight {
             color: var(--primary-color);
             font-weight: 600;
         }
 
-        @media (max-width: 768px) {
-            .profile-description {
-                margin: 20px 15px;
-                padding: 15px;
-            }
-            
-            .profile-description p {
-                font-size: 1.1em;
-            }
-        }
-
-        .project-image {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 8px;
-            margin: 15px 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .project-image:hover {
-            transform: scale(1.02);
-        }
-
-        @media (max-width: 768px) {
-            .project-image {
-                max-width: 100%;
-            }
-        }
-
-        .particles-background {
+        /* Background and space theme elements */
+        .space-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .project {
-            border-left: 4px solid var(--primary-color);
-            background: linear-gradient(to right, var(--card-bg) 0%, rgba(107, 91, 149, 0.1) 100%);
-        }
-
-        .project::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: -8px;
-            width: 12px;
-            height: 12px;
-            background: var(--primary-color);
-            border-radius: 50%;
-        }
-
-        .skills {
-            position: relative;
-        }
-
-        .skill {
-            position: relative;
-            background: var(--primary-color);
-        }
-
-        .skill::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            animation: skillConnect 2s infinite;
-        }
-
-        @keyframes skillConnect {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
+            background-color: var(--bg-color);
+            z-index: -2;
+            overflow: hidden;
         }
         
-        .container::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(var(--primary-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.03;
-            z-index: -1;
-            pointer-events: none;
-        }
-        ul {
-            list-style: none;
-        }
-
-        ul li::before {
-            content: '';
-            color: var(--primary-color);
-            font-size: 0.8em;
-            margin-right: 10px;
-            opacity: 0.8;
-        }
-        .project {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project::after {
-            content: '';
+        .star-field {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                var(--primary-color) var(--scroll, 0%), 
-                transparent var(--scroll, 0%));
-            transition: --scroll 0.3s ease;
-        }
-        .data-point {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.5); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 0.5; }
-        }
-        .skill {
-            background: linear-gradient(45deg, 
-                var(--primary-color), 
-                var(--secondary-color));
-            background-size: 200% 200%;
-            animation: gradientMove 5s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .planetary-system {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: 1;
+            z-index: -1;
         }
-
+        
         .star {
             position: absolute;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .star.tiny {
+            width: 1px;
+            height: 1px;
+            opacity: 0.7;
+        }
+        
+        .star.small {
+            width: 2px;
+            height: 2px;
+            opacity: 0.8;
+        }
+        
+        .star.medium {
+            width: 3px;
+            height: 3px;
+            opacity: 0.9;
+            box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        .star.large {
+            width: 4px;
+            height: 4px;
+            opacity: 1;
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,1));
+            opacity: 0;
+            transform: rotate(45deg);
+            animation: shootingStarAnimation 5s linear infinite;
+        }
+        
+        @keyframes shootingStarAnimation {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px) translateY(0) rotate(45deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            20% {
+                opacity: 0;
+                transform: translateX(300px) translateY(-300px) rotate(45deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(300px) translateY(-300px) rotate(45deg);
+            }
+        }
+        
+        .dark-mode .star {
+            opacity: 1;
+        }
+        
+        .planet-system {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            z-index: 1;
+        }
+        
+        .central-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 60px;
             height: 60px;
             background: radial-gradient(circle, #fff7d6 0%, #ffd700 50%, transparent 100%);
             border-radius: 50%;
             box-shadow: 0 0 40px #ffd700;
-            left: 23%;
-            top: 5.5%;
+            z-index: 2;
+        }
+        
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             z-index: 1;
         }
-
-        .planet-orbit {
-            position: absolute;
-            border: .2px solid rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
-            left: 23%;
-            top: 5.5%;
-            transform: translate(-50%, -50%);
-        }
-        @media (max-width: 965px) {
-            .star {
-                top: 6.5%;
-                left: 30%;
-            }
-            .planet-orbit {
-                top: 6.5%;
-                left: 30%;
-            }
-        }
-        @media (max-width: 768px) {
-            .star {
-                top: 6%;
-                left: 30%;
-            }
-            .planet-orbit {
-                top: 6%;
-                left: 30%;
-            }
-        }
-        @media (max-width: 628px) {
-            .star {
-                top: 5.7%;
-                left: 40%;
-            }
-            .planet-orbit {
-                top: 5.7%;
-                left: 40%;
-            }
-        }
-        @media (max-width: 500px) {
-            .star {
-                top: 5.3%;
-                left: 40%;
-            }
-            .planet-orbit {
-                top: 5.3%;
-                left: 40%;
-            }
-        }
-
-        .dark-mode .planet-orbit {
-            border: .1px solid rgba(255, 255, 255, 0.1);
-        }
-
+        
         .planet {
             position: absolute;
             border-radius: 50%;
             transform-origin: 50% 50%;
+            animation: orbit linear infinite;
         }
-
-        @keyframes orbit {
-            from { 
-                transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle))); 
+        
+        .planet-1 {
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(45deg, #4cc9f0, #4361ee);
+            box-shadow: 0 0 10px rgba(76, 201, 240, 0.6);
+            animation-duration: 20s;
+        }
+        
+        .planet-2 {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(45deg, #f72585, #b5179e);
+            box-shadow: 0 0 15px rgba(247, 37, 133, 0.6);
+            animation-duration: 30s;
+        }
+        
+        .planet-3 {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(45deg, #8338ec, #3a0ca3);
+            box-shadow: 0 0 12px rgba(131, 56, 236, 0.6);
+            animation-duration: 40s;
+        }
+        
+        .section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .skills-category {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .skills-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .certifications-container {
+            margin-top: 40px;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .certification {
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .certification:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+        
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        
+        .timeline-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        /* Publications */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .publication {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .publication:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .publication-year {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .publication h3 {
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+        }
+        
+        .publication-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        /* Honors */
+        .honors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .honor {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .honor:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .honor-icon {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .honor-content {
+            flex: 1;
+        }
+        
+        .honor-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        /* Outreach */
+        .outreach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .outreach-item {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .outreach-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .outreach-icon {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .outreach-content {
+            flex: 1;
+        }
+        
+        .outreach-content p {
+            margin: 0;
+        }
+        
+        /* Contact */
+        .contact-container {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1em;
+        }
+        
+        .contact-method i {
+            font-size: 1.5em;
+            color: white;
+        }
+        
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skills-category {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .skills-category h3 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        /* Certifications */
+        .certifications-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            margin-top: 40px;
+        }
+        
+        .certifications-container h3 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .certification {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .certification:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        .certification i {
+            color: var(--primary-color);
+        }
+        
+        /* Project link */
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        .project-link:hover {
+            background: rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        
+        .dark-mode footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive adjustments for timeline */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 40px;
             }
-            to { 
-                transform: rotate(calc(var(--start-angle) + 360deg)) translateX(var(--orbit-radius)) rotate(calc(-1 * (var(--start-angle) + 360deg))); 
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 30px;
+            }
+            
+            .publications-grid,
+            .honors-grid,
+            .outreach-grid,
+            .skills-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <button id="mode-toggle">🌙</button>
-    
-    <header>
-        <div class="planetary-system">
-            <div class="star"></div>
+    <div class="container">
+        <div class="space-bg">
+            <div class="star-field" id="starField"></div>
         </div>
-        <div class="header-content">
-            <img src="akshay.jpg" alt="Akshay Priyadarshi" class="profile-image">
-            <div class="header-text">
-                <h1>Akshay Priyadarshi</h1>
-                <p>Astrophysics PhD Researcher</p>
-                <p style="font-weight: bold; color: white; font-size: 1.2em; padding-left: 20px; padding-right: 20px;">
-                    <i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com" style="color: white;">priyadarshi.akshay@outlook.com</a> | 
-                    <i class="fas fa-map-marker-alt"></i> Manchester, UK | 
-                    <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/priyadarshiakshay/" style="color: white;">LinkedIn</a>
-                </p>
+        <button id="mode-toggle">🌙</button>
+        
+        <header>
+            <div class="planet-system">
+                <div class="central-star"></div>
+                <div class="orbit" style="width: 120px; height: 120px;">
+                    <div class="planet planet-1" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                </div>
+                <div class="orbit" style="width: 200px; height: 200px;">
+                    <div class="planet planet-2" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                </div>
+                <div class="orbit" style="width: 280px; height: 280px;">
+                    <div class="planet planet-3" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+                </div>
             </div>
-        </div>
-    </header>
+            <div class="header-content">
+                <img src="akshay.jpg" alt="Akshay Priyadarshi" class="profile-image">
+                <div class="header-text">
+                    <h1>Akshay Priyadarshi</h1>
+                    <p>Astrophysics PhD Researcher</p>
+                    <p style="font-weight: 500; color: white; font-size: 1.1em;">
+                        <i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com" style="color: white;">priyadarshi.akshay@outlook.com</a> <br> 
+                        <i class="fas fa-map-marker-alt"></i> Manchester, UK <br> 
+                        <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/priyadarshiakshay/" style="color: white;">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+        </header>
 
-    <nav>
-        <div class="nav-title">Akshay Priyadarshi</div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#honors">Honors</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#outreach">Outreach</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container" style="z-index: 2; position: relative;">
-        <h4>About Me</h4>
-        <p>Passionate about turning complex data into actionable insights. Skilled in Python, Machine Learning, Data Visualization, and Statistical Analysis.<br>
-        <span class="highlight">Actively looking for Data Science roles.</span></p>
+        <nav>
+            <div class="nav-title">Akshay Priyadarshi</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#honors">Honors</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#outreach">Outreach</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-        <section id="projects">
-            
+        <section id="about" class="section">
+            <div class="profile-description animated">
+                <p>Passionate about turning complex data into actionable insights. Skilled in Python, Machine Learning, Data Visualization, and Statistical Analysis.<br>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
             <h2>Featured Projects</h2>
-
-            <div class="project">
-                <h3>TransitFit Python package</h3>
-                <p>JBCA, University of Manchester (2022 - ongoing)</p>
-                <img src="transitfit.jpeg" alt="TransitFit visualization" class="project-image">
-                <p>Developed "TransitFit", a tool for exoplanet transmission spectroscopy. Enables detection of atmospheric molecules and determination of physical parameters in exoplanets.</p>
-                <p><a href="https://github.com/SPEARNET/TransitFit">GitHub Repository</a></p>
-            </div>
-            <div class="project">
-                <h3>Exoplanet Demographics Study</h3>
-                <p>JBCA, University of Manchester (2021 - ongoing)</p>
-                <img src="exodem.png" alt="Exoplanet demographics, image credits: www.mn.uio" class="project-image">
-                <p>Building a statistical tool to simulate planets around stars, estimating the number and characteristics of undetected planets to optimize future observations and planet formation theories.</p>
-            </div>
-            <div class="project">
-                <h3>Simulation and prediction of exoplanet atmosphere</h3>
-                <p>NISER Bhubaneswar (2020 - 2021)</p>
-                <p>Modeled the atmosphere and simulated observations to predict the existence of HC₃N in a Super-Earth exoplanet GJ1132 b.</p>
-                <p>Publication: <a href="https://doi.org/10.3847/2041-8213/ac2f3a">Paper</a></p>
-            </div>
-            <div class="project">
-                <h3>Machine Learning model to improve detection of dark matter</h3>
-                <p>NISER Bhubaneswar (2020 - 2021)</p>
-                <img src="https://i.imgur.com/HLQ4hUA.png" alt="Linear regression model" class="project-image">
-                <p>Compared ML algorithms (Random Forest, SVM, Linear Regression, Neural Networks) to train and test a model over observational data. Improved accuracy of signal retrieval using Linear Regression and Random Forests.</p>
-                <p><a href="https://PriyadarshiAkshay.github.io/MLProject.html">Project report</a></p>
-            </div>
-            <div class="project">
-                <h3>Football Match Data Analysis and Visualization</h3>
-                <video src="football_vis.webm" class="project-image" autoplay loop muted></video>
-                <p>Data analysis and visualization tool for football matches using Python, focusing on World Cup data. Shot maps and passing networks, using matplotlib and mplsoccer to provide actionable insights. Machine learning techniques for data binarization and feature encoding, enhancing the accuracy of event tagging and player performance metric.</p>
-                <p><a href="https://github.com/PriyadarshiAkshay/football_visualisation">GitHub repo</a></p>
-            </div>
-            <div class="project">
-                <h3>summarAIser: AI agent to search & summarise academic research</h3>
-                <p>Engineered an AI research assistant that utilizes RAG, arXiv-API, and Gemini-API to fetch, summarize, and validate academic papers. It's designed to help researchers and enthusiasts stay up-to-date with the latest developments in science.</p>
-                <p><a href="https://github.com/PriyadarshiAkshay/summarAIzer">GitHub repo</a></p>
-            </div>
-            <div class="project">
-                <h3>Quantitative analysis of stocks and options</h3>
-                <img src="^GSPC_portfolio_performance.png" alt="Buy/sell signals" class="project-image">
-                <p>Rebalanced portfolio to optimise risk/returns using efficient frontier charts, extracting live stock data from yahoo finance.</p>
-                <p>Built a trading bot using Alpaca-API based on momentum data from moving averages, Bollinger Bonds, Keltner Channels, generating alpha of 27% after backtesting.</p>
-                <p>Found optimum stocks for bear market through Monte Carlo simulation, VaR95, and value-based analysis.</p>
-                <p>Generated Call/Put pricing of 1000s of live options using Alpaca-API and Black-Scholes-Merton model.</p>
-                <p><a href="https://github.com/PriyadarshiAkshay/qaunt-finance">GitHub repo</a></p>
-        </section>
-
-        <section id="skills">
-            <h2>Skills & Certifications</h2>
-            <div class="skills">
-                <span class="skill">Python</span>
-                <span class="skill">Machine Learning</span>
-                <span class="skill">Data Visualization</span>
-                <span class="skill">Statistical Analysis</span>
-                <span class="skill">Latex</span>
-                <span class="skill">GitHub</span>
-                <span class="skill">scikit-learn</span>
-                <span class="skill">pandas</span>
-                <span class="skill">seaborn</span>
-                <span class="skill">matplotlib</span>
-                <span class="skill">scipy</span>
-                <span class="skill">numpy</span>
-                <span class="skill">selenium</span>
-                <span class="skill">dynesty</span>
-                <span class="skill">beautifulsoup4</span>
-            </div>
-            <p>Certifications:</p>
-            <ul style="list-style-type: disc; padding-left: 20px;">
-                <li><a href="https://www.coursera.org/account/accomplishments/records/AXLWQ4OWIV5R">Investment Risk Management</a></li>
-                <li><a href="https://learn.deeplearning.ai/accomplishments/ca3cf82a-8bb1-4aaf-b732-6a4662c4f228?usp=sharing">Multi AI Agent Systems with crewAI!</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/records/GAMPZWHGE1HU">Introduction to Docker</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/records/1D1IGN4L304Z">Weather Data in BigQuery</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/records/J5ZXXN63KLRH">Data Analysis with R Programming</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/verify/FP3BHWHLT9YI">Introduction to PySpark</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/verify/RZE94BA2S6EC">Hadoop and Spark on Google Cloud</a></li>                
-                <li><a href="https://www.coursera.org/account/accomplishments/verify/Z28HBZ3592YW">AWS Cloud Technical Essentials</a></li>
-                <li><a href="https://www.credly.com/badges/4042e909-8f21-4f96-bd29-153db7ca5fb0/public_url">Databases and SQL for Data Science</a></li>
-                <li><a href="https://learn.deeplearning.ai/accomplishments/30a6ba77-5fea-490d-9d3f-c5347cc55c92?usp=sharing">LangChain (developing AI chatbot for personal data)</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/records/PSZY0INQAHLO">Preparing Data for Analysis with Excel</a></li>
-            </ul>
-        </section>
-        <section id="education">
-            <h2>Education</h2>
-            <div class="project">
-                <h3>PhD in Astronomy & Astrophysics</h3>
-                <p>University of Manchester (2021 - 2025 <em>expected</em>)<br>
-                Funded by UKRI-STFC scholarship</p>
-            </div>
-            <div class="project">
-                <h3>Integrated MSc in Physics & minor in Computer Science</h3>
-                <p>NISER Bhubaneswar, India (2016 - 2021)<br>
-                Funded by DST-INSPIRE scholarship</p>
-            </div>
-        </section>
-        <section id="publications"></section>
-            <h2>Publications</h2>
-            <ul style="list-style-type: disc; padding-left: 20px;">
-                <li><a href="https://doi.org/10.1093/mnrasl/slae083">Transit Timing Variation of K2-237b: Hints Toward Planet Disk Migration</a> <em>MNRAS Letters, 2024</em></li>
-                <li><a href="https://doi.org/10.1093/mnras/stad3353">TransitFit: combined multi-instrument exoplanet transit fitting for JWST, HST, and ground-based transmission spectroscopy studies</a> <em>MNRAS, 2023</em></li>
-                <li><a href="https://doi.org/10.3847/1538-3881/acfeea">Revisiting the Transit Timing and Atmosphere Characterization of the Neptune-mass Planet HAT-P-26 b</a> <em>The Astronomical Journal, 2023</em></li>
-                <li><a href="https://doi.org/10.3847/2041-8213/ac2f3a">Detectable Abundance of Cyanoacetylene (HC3N) Predicted on Reduced Nitrogen-rich Super-Earth Atmospheres</a> <em>The Astrophysical Journal Letters, 2021</em></li>
-            </ul>
-        </section>
-     
-          <section id="honors">
-            <h2>Honors and Awards</h2>
-            <div class="project">
-                <h3>UKRI-STFC Scholarship</h3>
-                <p>3.5-year scholarship from UKRI. </p>
-            </div>
-            <div class="project">
-                <h3>DST-INSPIRE Scholarship</h3>
-                <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education. </p>
-            </div>
-            <div class="project">
-                <h3>Silver Honour</h3>
-                <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
-                <p>Scored 92 percentile globally.</p>
-            </div>
-            <div class="project">
-                <h3>Finalist</h3>
-                <p>IISER Tirupati, Abhiprajna (May 2020)</p>
-                <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
-            </div>
-        </section>
-        <section id="experience">
-            <h2>Other Experience</h2>
-            
-            <div class="project">
-                <h3>Graduate Teaching Assistant</h3>
-                <p>The University of Manchester (Feb 2022 - June 2024)</p>
-                <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
-                <ul>
-                <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
-                <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
-            </ul>
-            </div>
-            <div class="project">
-                <h3>Visiting Student</h3>
-                <p>IUCAA, Pune, India (Dec 2018 - Jan 2021)</p>
-                <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
-            </div>
-            <div class="project">
-                <h3>Summer Research Intern</h3>
-                <p>Indian Institute of Technology, Guwahati (May 2018 - July 2018)</p>
-                <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
-            </div>
-            <div class="project">
-                <h3>Summer Research Intern</h3>
-                <p>Indian Institute of Technology, Madras (May 2017 - July 2017)</p>
-                <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
-            </div>
-        </section>
-
-        <section id="outreach">
-            <h2>Outreach and Leadership</h2>
-            <ul style="list-style-type: disc; padding-left: 20px;">
-                <li><a href="https://nam2024.hull.ac.uk/towards-100000-exoplanets/">Conference session organiser</a> at National Astronomy Meeting 2024, Hull</li>
-
-                <li>UKEXOM, 2024: <a href="http://www.exocommunity.uk/">Presented</a> exoplanet demographics study</li>
-
-                <li>UK National Astronomy Meeting, 2023: <a href="https://nam2023.org/science/parallel-sessions/details/2/38">Presented</a> exoplanet demographics study</li>
-
-                <li>European Astronomical Meeting, 2023: <a href="https://eas2023programme.kuoni-congress.info/presentation/transitfit-a-python-package-for-fitting-multi-instrument-exoplanet-transit-from-jwst-hst-and-ground-based-transmission-spectroscopy-studies">Presented</a> TransitFit</li>
-
-                <li>Strange New Worlds Conference, 2023: <a href="https://www.iiserpune.ac.in/events/3515/exoplanet-conference-at-iiser-pune">Presented</a> exoplanet demographics study</li>
-
-                <li><a href="https://sites.google.com/view/jbca-jacs/home?authuser=0">JACS</a> officer (2021-2023): Coordinated computing seminars at the University of Manchester's Astrophysics department</li>
-
-                <li>Presented talk on habitable exoplanets at <a href="https://pintofscience.co.uk/event/is-anybody-out-there">Pint of Science 2023</a></li>
-
-                <li>Hosted a JWST workshop at <a href="https://ukseds.org/ignition/wp-content/uploads/2023/03/NSSC-Brochure-2023-FINAL-v2_compressed.pdf">UKSEDS 2023</a></li>
-
-                <li>Exhibited at the JWST stand in the <a href="https://www.discoverthebluedot.com/">Bluedot festival</a>, 2021</li>
-
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a></p>
-                <p><i class="fas fa-map-marker-alt"></i> Manchester, UK</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/priyadarshiakshay/" class="social-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/PriyadarshiAkshay" class="social-link">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://orcid.org/my-orcid?orcid=0000-0003-1143-0877" class="social-link">
-                        <i class="fab fa-orcid"></i> ORCID
-                    </a>
+            <div class="projects-grid">
+                <div class="project animated">
+                    <h3>TransitFit Python package</h3>
+                    <p>JBCA, University of Manchester (2022 - ongoing)</p>
+                    <img src="transitfit.jpeg" alt="TransitFit visualization" class="project-image">
+                    <p>Developed "TransitFit", a tool for exoplanet transmission spectroscopy. Enables detection of atmospheric molecules and determination of physical parameters in exoplanets.</p>
+                    <p><a href="https://github.com/SPEARNET/TransitFit" class="project-link"><i class="fab fa-github"></i> GitHub Repository</a></p>
+                </div>
+                <div class="project animated delay-1">
+                    <h3>Exoplanet Demographics Study</h3>
+                    <p>JBCA, University of Manchester (2021 - ongoing)</p>
+                    <img src="exodem.png" alt="Exoplanet demographics, image credits: www.mn.uio" class="project-image">
+                    <p>Building a statistical tool to simulate planets around stars, estimating the number and characteristics of undetected planets to optimize future observations and planet formation theories.</p>
+                </div>
+                <div class="project animated delay-2">
+                    <h3>Simulation and prediction of exoplanet atmosphere</h3>
+                    <p>NISER Bhubaneswar (2020 - 2021)</p>
+                    <p>Modeled the atmosphere and simulated observations to predict the existence of HC₃N in a Super-Earth exoplanet GJ1132 b.</p>
+                    <p><a href="https://doi.org/10.3847/2041-8213/ac2f3a" class="project-link"><i class="fas fa-file-alt"></i> View Paper</a></p>
+                </div>
+                <div class="project animated">
+                    <h3>Machine Learning model to improve detection of dark matter</h3>
+                    <p>NISER Bhubaneswar (2020 - 2021)</p>
+                    <img src="https://i.imgur.com/HLQ4hUA.png" alt="Linear regression model" class="project-image">
+                    <p>Compared ML algorithms (Random Forest, SVM, Linear Regression, Neural Networks) to train and test a model over observational data. Improved accuracy of signal retrieval using Linear Regression and Random Forests.</p>
+                    <p><a href="https://PriyadarshiAkshay.github.io/MLProject.html" class="project-link"><i class="fas fa-file-alt"></i> Project report</a></p>
+                </div>
+                <div class="project animated delay-1">
+                    <h3>Football Match Data Analysis and Visualization</h3>
+                    <video src="football_vis.webm" class="project-image" autoplay loop muted></video>
+                    <p>Data analysis and visualization tool for football matches using Python, focusing on World Cup data. Shot maps and passing networks, using matplotlib and mplsoccer to provide actionable insights.</p>
+                    <p><a href="https://github.com/PriyadarshiAkshay/football_visualisation" class="project-link"><i class="fab fa-github"></i> GitHub repo</a></p>
+                </div>
+                <div class="project animated delay-2">
+                    <h3>summarAIser: AI agent to search & summarise academic research</h3>
+                    <p>Engineered an AI research assistant that utilizes RAG, arXiv-API, and Gemini-API to fetch, summarize, and validate academic papers. It's designed to help researchers and enthusiasts stay up-to-date with the latest developments in science.</p>
+                    <p><a href="https://github.com/PriyadarshiAkshay/summarAIzer" class="project-link"><i class="fab fa-github"></i> GitHub repo</a></p>
+                </div>
+                <div class="project animated">
+                    <h3>Quantitative analysis of stocks and options</h3>
+                    <img src="^GSPC_portfolio_performance.png" alt="Buy/sell signals" class="project-image">
+                    <p>Rebalanced portfolio to optimise risk/returns using efficient frontier charts. Built a trading bot using Alpaca-API based on momentum data, generating alpha of 27% after backtesting.</p>
+                    <p><a href="https://github.com/PriyadarshiAkshay/qaunt-finance" class="project-link"><i class="fab fa-github"></i> GitHub repo</a></p>
                 </div>
             </div>
         </section>
-        <p>© 2025 Akshay Priyadarshi. All rights reserved.</p>
+
+        <section id="skills" class="section">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-container">
+                <div class="skills-category animated">
+                    <h3>Data Science & Programming</h3>
+                    <div class="skills">
+                        <span class="skill">Python</span>
+                        <span class="skill">Machine Learning</span>
+                        <span class="skill">Data Visualization</span>
+                        <span class="skill">Statistical Analysis</span>
+                        <span class="skill">scikit-learn</span>
+                        <span class="skill">pandas</span>
+                        <span class="skill">seaborn</span>
+                        <span class="skill">matplotlib</span>
+                        <span class="skill">scipy</span>
+                        <span class="skill">numpy</span>
+                    </div>
+                </div>
+                <div class="skills-category animated delay-1">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skills">
+                        <span class="skill">GitHub</span>
+                        <span class="skill">Latex</span>
+                        <span class="skill">selenium</span>
+                        <span class="skill">dynesty</span>
+                        <span class="skill">beautifulsoup4</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certifications-container animated delay-2">
+                <h3>Certifications</h3>
+                <div class="certifications-grid">
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/records/AXLWQ4OWIV5R">Investment Risk Management</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://learn.deeplearning.ai/accomplishments/ca3cf82a-8bb1-4aaf-b732-6a4662c4f228?usp=sharing">Multi AI Agent Systems with crewAI!</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/records/GAMPZWHGE1HU">Introduction to Docker</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/records/1D1IGN4L304Z">Weather Data in BigQuery</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/records/J5ZXXN63KLRH">Data Analysis with R Programming</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/FP3BHWHLT9YI">Introduction to PySpark</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/RZE94BA2S6EC">Hadoop and Spark on Google Cloud</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/verify/Z28HBZ3592YW">AWS Cloud Technical Essentials</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.credly.com/badges/4042e909-8f21-4f96-bd29-153db7ca5fb0/public_url">Databases and SQL for Data Science</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://learn.deeplearning.ai/accomplishments/30a6ba77-5fea-490d-9d3f-c5347cc55c92?usp=sharing">LangChain (developing AI chatbot for personal data)</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/records/B03X3CUG9Y8Y">Machine Learning with Python</a>
+                    </div>
+                    <div class="certification">
+                        <i class="fas fa-certificate"></i>
+                        <a href="https://www.coursera.org/account/accomplishments/records/PSZY0INQAHLO">Preparing Data for Analysis with Excel</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item animated">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2025 <em>(expected)</em></div>
+                        <h3>PhD in Astronomy & Astrophysics</h3>
+                        <p>University of Manchester</p>
+                        <p class="timeline-detail">Funded by UKRI-STFC scholarship</p>
+                    </div>
+                </div>
+                <div class="timeline-item animated delay-1">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2016 - 2021</div>
+                        <h3>Integrated MSc in Physics & minor in Computer Science</h3>
+                        <p>NISER Bhubaneswar, India</p>
+                        <p class="timeline-detail">Funded by DST-INSPIRE scholarship</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="section">
+            <h2>Publications</h2>
+            <div class="publications-grid">
+                <div class="publication animated">
+                    <div class="publication-year">2024</div>
+                    <h3>Transit Timing Variation of K2-237b: Hints Toward Planet Disk Migration</h3>
+                    <p><em>MNRAS Letters</em></p>
+                    <a href="https://doi.org/10.1093/mnrasl/slae083" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
+                </div>
+                <div class="publication animated delay-1">
+                    <div class="publication-year">2023</div>
+                    <h3>TransitFit: combined multi-instrument exoplanet transit fitting for JWST, HST, and ground-based transmission spectroscopy studies</h3>
+                    <p><em>MNRAS</em></p>
+                    <a href="https://doi.org/10.1093/mnras/stad3353" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
+                </div>
+                <div class="publication animated delay-2">
+                    <div class="publication-year">2023</div>
+                    <h3>Revisiting the Transit Timing and Atmosphere Characterization of the Neptune-mass Planet HAT-P-26 b</h3>
+                    <p><em>The Astronomical Journal</em></p>
+                    <a href="https://doi.org/10.3847/1538-3881/acfeea" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
+                </div>
+                <div class="publication animated">
+                    <div class="publication-year">2021</div>
+                    <h3>Detectable Abundance of Cyanoacetylene (HC3N) Predicted on Reduced Nitrogen-rich Super-Earth Atmospheres</h3>
+                    <p><em>The Astrophysical Journal Letters</em></p>
+                    <a href="https://doi.org/10.3847/2041-8213/ac2f3a" class="publication-link"><i class="fas fa-external-link-alt"></i> View Publication</a>
+                </div>
+            </div>
+        </section>
+     
+        <section id="honors" class="section">
+            <h2>Honors and Awards</h2>
+            <div class="honors-grid">
+                <div class="honor animated">
+                    <div class="honor-icon"><i class="fas fa-award"></i></div>
+                    <div class="honor-content">
+                        <h3>UKRI-STFC Scholarship</h3>
+                        <p>3.5-year scholarship from UKRI.</p>
+                    </div>
+                </div>
+                <div class="honor animated delay-1">
+                    <div class="honor-icon"><i class="fas fa-award"></i></div>
+                    <div class="honor-content">
+                        <h3>DST-INSPIRE Scholarship</h3>
+                        <p>5-year scholarship and contingency grant, given to a limited number of students, to facilitate and promote science education.</p>
+                    </div>
+                </div>
+                <div class="honor animated delay-2">
+                    <div class="honor-icon"><i class="fas fa-medal"></i></div>
+                    <div class="honor-content">
+                        <h3>Silver Honour</h3>
+                        <p>International Astronomy and Astrophysics Competition (Jul 2020)</p>
+                        <p>Scored 92 percentile globally.</p>
+                    </div>
+                </div>
+                <div class="honor animated">
+                    <div class="honor-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="honor-content">
+                        <h3>Finalist</h3>
+                        <p>IISER Tirupati, Abhiprajna (May 2020)</p>
+                        <p>Selected among the top 6 teams from India, in an astronomy themed science competition.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience" class="section">
+            <h2>Other Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item animated">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Feb 2022 - June 2024</div>
+                        <h3>Graduate Teaching Assistant</h3>
+                        <p>The University of Manchester</p>
+                        <p>Taught physics courses, including computational physics, led lab demonstrations, conducted interviews, and graded assignments.</p>
+                        <ul class="timeline-list">
+                            <li>Demonstrator for <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2023/00638/bsc-physics/course-details/PHYS10180#course-unit-details">General Physics lab</a> (2021-2022), Electronics lab (2022-23), <a href="https://www.manchester.ac.uk/study/undergraduate/courses/2024/00638/bsc-physics/course-details/PHYS20161#course-unit-details">Introduction to Programming</a> (2023-24)</li>
+                            <li>Teaching assistant for interdisciplinary course <a href="https://www.college.manchester.ac.uk/units/?year=2023&semester=1&course=458">"Are we alone"</a> (2022-2023)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item animated delay-1">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2018 - Jan 2021</div>
+                        <h3>Visiting Student</h3>
+                        <p>IUCAA, Pune, India</p>
+                        <p>Selected for the Vacation Students' Programme (VSP) 2020. Worked on characterizing quasars into BAL, emerging-BAL, and non-BAL quasars.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animated delay-2">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2018 - July 2018</div>
+                        <h3>Summer Research Intern</h3>
+                        <p>Indian Institute of Technology, Guwahati</p>
+                        <p>Investigated the optical limiting and spectroscopic properties of SiOx thin films.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animated">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2017 - July 2017</div>
+                        <h3>Summer Research Intern</h3>
+                        <p>Indian Institute of Technology, Madras</p>
+                        <p>Analyzed the optical spectroscopic properties of Pentacene thin films.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="outreach" class="section">
+            <h2>Outreach and Leadership</h2>
+            <div class="outreach-grid">
+                <div class="outreach-item animated">
+                    <div class="outreach-icon"><i class="fas fa-users"></i></div>
+                    <div class="outreach-content">
+                        <p><a href="https://nam2024.hull.ac.uk/towards-100000-exoplanets/">Conference session organiser</a> at National Astronomy Meeting 2024, Hull</p>
+                    </div>
+                </div>
+                <div class="outreach-item animated delay-1">
+                    <div class="outreach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="outreach-content">
+                        <p>UKEXOM, 2024: <a href="http://www.exocommunity.uk/">Presented</a> exoplanet demographics study</p>
+                    </div>
+                </div>
+                <div class="outreach-item animated delay-2">
+                    <div class="outreach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="outreach-content">
+                        <p>UK National Astronomy Meeting, 2023: <a href="https://nam2023.org/science/parallel-sessions/details/2/38">Presented</a> exoplanet demographics study</p>
+                    </div>
+                </div>
+                <div class="outreach-item animated">
+                    <div class="outreach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="outreach-content">
+                        <p>European Astronomical Meeting, 2023: <a href="https://eas2023programme.kuoni-congress.info/presentation/transitfit-a-python-package-for-fitting-multi-instrument-exoplanet-transit-from-jwst-hst-and-ground-based-transmission-spectroscopy-studies">Presented</a> TransitFit</p>
+                    </div>
+                </div>
+                <div class="outreach-item animated delay-1">
+                    <div class="outreach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="outreach-content">
+                        <p>Strange New Worlds Conference, 2023: <a href="https://www.iiserpune.ac.in/events/3515/exoplanet-conference-at-iiser-pune">Presented</a> exoplanet demographics study</p>
+                    </div>
+                </div>
+                <div class="outreach-item animated delay-2">
+                    <div class="outreach-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="outreach-content">
+                        <p><a href="https://sites.google.com/view/jbca-jacs/home?authuser=0">JACS</a> officer (2021-2023): Coordinated computing seminars at the University of Manchester's Astrophysics department</p>
+                    </div>
+                </div>
+                <div class="outreach-item animated">
+                    <div class="outreach-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <div class="outreach-content">
+                        <p>Presented talk on habitable exoplanets at <a href="https://pintofscience.co.uk/event/is-anybody-out-there">Pint of Science 2023</a></p>
+                    </div>
+                </div>
+                <div class="outreach-item animated delay-1">
+                    <div class="outreach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="outreach-content">
+                        <p>Hosted a JWST workshop at <a href="https://ukseds.org/ignition/wp-content/uploads/2023/03/NSSC-Brochure-2023-FINAL-v2_compressed.pdf">UKSEDS 2023</a></p>
+                    </div>
+                </div>
+                <div class="outreach-item animated delay-2">
+                    <div class="outreach-icon"><i class="fas fa-star"></i></div>
+                    <div class="outreach-content">
+                        <p>Exhibited at the JWST stand in the <a href="https://www.discoverthebluedot.com/">Bluedot festival</a>, 2021</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-info animated">
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:priyadarshi.akshay@outlook.com">priyadarshi.akshay@outlook.com</a>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Manchester, UK</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/priyadarshiakshay/" class="social-link">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/PriyadarshiAkshay" class="social-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://orcid.org/my-orcid?orcid=0000-0003-1143-0877" class="social-link">
+                            <i class="fab fa-orcid"></i> ORCID
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>© 2025 Akshay Priyadarshi. All rights reserved.</p>
+        </footer>
     </div>
 
     <script>
@@ -1210,24 +1628,59 @@
             setTheme(!body.classList.contains('dark-mode'));
         });
 
-        // Update the smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; // Added extra 20px for padding
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Create star field
+        function createStarField() {
+            const starField = document.getElementById('starField');
+            const numStars = 200;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                const size = Math.random();
+                
+                if (size < 0.5) {
+                    star.className = 'star tiny';
+                } else if (size < 0.8) {
+                    star.className = 'star small';
+                } else if (size < 0.95) {
+                    star.className = 'star medium';
+                } else {
+                    star.className = 'star large';
+                }
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starField.appendChild(star);
+            }
+            
+            // Add shooting stars
+            for (let i = 0; i < 5; i++) {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting-star';
+                shootingStar.style.left = `${Math.random() * 100}%`;
+                shootingStar.style.top = `${Math.random() * 100}%`;
+                shootingStar.style.animationDelay = `${Math.random() * 15}s`;
+                
+                starField.appendChild(shootingStar);
+            }
+        }
 
-        const sectionHeaders = Array.from(document.querySelectorAll('h2'));
-        const nav = document.querySelector('nav');
-        const navHeight = nav.offsetHeight;
+        // Initialize planet animation
+        function initializePlanets() {
+            const planets = document.querySelectorAll('.planet');
+            
+            planets.forEach((planet, index) => {
+                const orbit = planet.parentElement;
+                const orbitWidth = parseInt(orbit.style.width);
+                const orbitRadius = orbitWidth / 2;
+                const direction = index % 2 === 0 ? 1 : -1;
+                const startAngle = Math.random() * 360;
+                
+                planet.style.animation = `orbit ${15 + index * 5}s linear infinite ${direction === 1 ? '' : 'reverse'}`;
+                planet.style.transform = `rotate(${startAngle}deg) translateX(${orbitRadius / 2}px) rotate(-${startAngle}deg)`;
+            });
+        }
 
         // Hamburger menu functionality
         function toggleMenu() {
@@ -1247,277 +1700,79 @@
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            const navMenu = document.getElementById('nav-menu');
-            const hamburger = document.querySelector('.hamburger');
-            if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
-                navMenu.classList.remove('show');
-                hamburger.classList.remove('active');
-            }
-        });
-
-        // Reset margins when scroll ends
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                document.body.style.marginTop = '0';
-                document.body.style.marginBottom = '0';
-            }, 100);
-        });
-
-        function handleScroll() {
-            const nav = document.querySelector('nav');
-            const scrollPosition = window.pageYOffset + nav.offsetHeight;
-            const header = document.querySelector('header');
-
-            if (window.innerWidth <= 768) {
-                if (scrollPosition > header.offsetHeight) {
-                    nav.classList.add('scrolled');
-                    document.body.style.paddingTop = nav.offsetHeight + 'px';
-                } else {
-                    nav.classList.remove('scrolled');
-                    document.body.style.paddingTop = '0';
-                }
-            } else {
-                document.body.style.paddingTop = '0';
-            }
-
-            // Update sticky headers
-            const stickyHeaders = document.querySelectorAll('h2');
-            const navHeight = nav.offsetHeight;
-            stickyHeaders.forEach(header => {
-                if (window.innerWidth <= 768) {
-                    header.style.top = navHeight + 'px';
-                } else {
-                    header.style.top = (navHeight) + 'px';
-                }
-            });
-        }
-
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
-        handleScroll(); // Initial call
-
-        // Updated animateOnScroll function
+        // Scroll animations
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.project, .skill, .contact-info, h2');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
-                if (isVisible) {
-                    el.style.visibility = 'visible';
-                    el.style.animation = 'fadeIn 0.8s ease-out forwards';
-                }
-            });
-        }
-
-        // Call the function on load and scroll
-        window.addEventListener('load', animateOnScroll);
-        window.addEventListener('scroll', animateOnScroll);
-
-        // Add smooth scrolling for all internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add parallax effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const scrollPosition = window.pageYOffset;
-            header.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
-        });
-
-        // Create particle background
-        function createParticles() {
-            const particlesContainer = document.createElement('div');
-            particlesContainer.className = 'particles-background';
-            document.body.appendChild(particlesContainer);
-
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: ${Math.random() * 3}px;
-                    height: ${Math.random() * 3}px;
-                    background: ${Math.random() > 0.5 ? 'var(--primary-color)' : 'var(--secondary-color)'};
-                    border-radius: 50%;
-                    top: ${Math.random() * 100}%;
-                    left: ${Math.random() * 100}%;
-                    opacity: ${Math.random() * 0.5};
-                    animation: float ${5 + Math.random() * 10}s infinite linear;
-                `;
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        createParticles();
-
-        // Add data visualization animation to project cards
-        document.querySelectorAll('.project').forEach(project => {
-            project.addEventListener('mouseenter', () => {
-                project.style.transform = 'translateX(10px)';
-                project.style.boxShadow = '0 0 20px rgba(107, 91, 149, 0.3)';
-            });
-
-            project.addEventListener('mouseleave', () => {
-                project.style.transform = 'translateX(0)';
-                project.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-            });
-        });
-
-        // Add random data points to project cards
-        function addDataPoints() {
-            document.querySelectorAll('.project').forEach(project => {
-                for (let i = 0; i < 5; i++) {
-                    const point = document.createElement('div');
-                    point.className = 'data-point';
-                    point.style.left = `${Math.random() * 100}%`;
-                    point.style.top = `${Math.random() * 100}%`;
-                    project.appendChild(point);
-                }
-            });
-        }
-
-        // Add progress bar animation to project cards
-        function updateProjectProgress() {
-            const projects = document.querySelectorAll('.project');
-            projects.forEach(project => {
-                const rect = project.getBoundingClientRect();
-                const visible = rect.top < window.innerHeight && rect.bottom > 0;
-                if (visible) {
-                    const scrollPercentage = Math.min(
-                        100,
-                        Math.max(
-                            0,
-                            ((window.innerHeight - rect.top) / rect.height) * 100
-                        )
-                    );
-                    project.style.setProperty('--scroll', `${scrollPercentage}%`);
-                }
-            });
-        }
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', () => {
-            addDataPoints();
-            window.addEventListener('scroll', updateProjectProgress);
-            updateProjectProgress();
-        });
-
-        // Add interactive hover effect for skills
-        document.querySelectorAll('.skill').forEach(skill => {
-            skill.addEventListener('mouseover', () => {
-                const skills = document.querySelectorAll('.skill');
-                const index = Array.from(skills).indexOf(skill);
-                skills.forEach((s, i) => {
-                    const distance = Math.abs(i - index);
-                    s.style.transform = `scale(${1 + (3 - distance) * 0.05})`;
-                    s.style.opacity = 1 - (distance * 0.2);
-                });
-            });
-
-            skill.addEventListener('mouseout', () => {
-                document.querySelectorAll('.skill').forEach(s => {
-                    s.style.transform = '';
-                    s.style.opacity = '';
-                });
-            });
-        });
-
-        // Add subtle parallax effect to data points
-        document.addEventListener('mousemove', (e) => {
-            const points = document.querySelectorAll('.data-point');
-            const mouseX = e.clientX / window.innerWidth - 0.5;
-            const mouseY = e.clientY / window.innerHeight - 0.5;
-
-            points.forEach(point => {
-                const speed = Math.random() * 20;
-                point.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
-            });
-        });
-
-        // Planetary system animation
-        function createPlanetarySystem() {
-            const system = document.querySelector('.planetary-system');
-            const planets = [
-                { size: 15, color: '#ff6b6b', orbitRadius: 120, speed: 20 },
-                { size: 25, color: '#4ecdc4', orbitRadius: 200, speed: 30 },
-                { size: 20, color: '#45b7d1', orbitRadius: 280, speed: 40 },
-                { size: 18, color: '#96ceb4', orbitRadius: 350, speed: 50 }
-            ];
-
-            planets.forEach((planetData, index) => {
-                const orbit = document.createElement('div');
-                orbit.className = 'planet-orbit';
-                orbit.style.width = `${planetData.orbitRadius * 2}px`;
-                orbit.style.height = `${planetData.orbitRadius * 2}px`;
-
-                const planet = document.createElement('div');
-                planet.className = 'planet';
-                planet.style.width = `${planetData.size}px`;
-                planet.style.height = `${planetData.size}px`;
-                planet.style.background = planetData.color;
-                planet.style.boxShadow = `0 0 ${planetData.size/2}px ${planetData.color}`;
-                planet.style.left = '50%';
-                planet.style.top = '50%';
-                planet.style.setProperty('--orbit-radius', `${planetData.orbitRadius}px`);
+            const elements = document.querySelectorAll('.animated');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
                 
-                const startAngle = Math.random() * 360;
-                planet.style.setProperty('--start-angle', `${startAngle}deg`);
-                planet.style.setProperty('--orbit-radius', `${planetData.orbitRadius}px`);
-                
-                // Apply animation with timing function
-                planet.style.animation = `orbit ${planetData.speed}s linear infinite`;
-                planet.style.transform = `rotate(${startAngle}deg) translateX(${planetData.orbitRadius}px) rotate(-${startAngle}deg)`;
-
-                orbit.appendChild(planet);
-                system.appendChild(orbit);
+                // If element is in viewport
+                if(position.top < window.innerHeight - 100) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
             });
         }
 
-        // Add mouse parallax effect to planetary system
-        function addParallaxEffect() {
-            const system = document.querySelector('.planetary-system');
-            const star = document.querySelector('.star');
-            const planets = document.querySelectorAll('.planet');
-            const orbits = document.querySelectorAll('.planet-orbit');
-
+        // Create parallax effect
+        function createParallaxEffect() {
             document.addEventListener('mousemove', (e) => {
-                const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-                const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-
-                // Move star
-                star.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
+                const mouseX = e.clientX / window.innerWidth - 0.5;
+                const mouseY = e.clientY / window.innerHeight - 0.5;
                 
-                // Move orbits and planets
-                orbits.forEach((orbit, index) => {
-                    const speed = (index + 1) * 0.5;
-                    const offsetX = mouseX * speed;
-                    const offsetY = mouseY * speed;
-                    
-                    // Move the orbit
-                    orbit.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+                const stars = document.querySelectorAll('.star');
+                const planets = document.querySelectorAll('.planet');
+                const centralStar = document.querySelector('.central-star');
+                
+                stars.forEach(star => {
+                    const factor = parseFloat(window.getComputedStyle(star).opacity) * 20;
+                    star.style.transform = `translate(${mouseX * factor}px, ${mouseY * factor}px)`;
+                });
+                
+                if (centralStar) {
+                    centralStar.style.transform = `translate(${mouseX * -30}px, ${mouseY * -30}px)`;
+                }
+                
+                planets.forEach((planet, index) => {
+                    const factor = 10 + index * 5;
+                    planet.style.marginLeft = `${mouseX * factor}px`;
+                    planet.style.marginTop = `${mouseY * factor}px`;
                 });
             });
         }
 
-        // Initialize planetary system
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            createPlanetarySystem();
-            addParallaxEffect();
+            createStarField();
+            initializePlanets();
+            createParallaxEffect();
+            
+            // Set initial state for animated elements
+            document.querySelectorAll('.animated').forEach(el => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(20px)";
+                el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            });
+            
+            // Handle scroll animations
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
